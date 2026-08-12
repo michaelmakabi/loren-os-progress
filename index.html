@@ -20,8 +20,7 @@ header .up{margin-left:auto;text-align:right;font-size:12px;opacity:.92}
 .next .when{font-size:12px;color:#7a6a1f;font-weight:700;margin-bottom:8px}
 .next ul{margin:6px 0 0 20px}.next li{margin:3px 0;font-size:14px}
 .next .cta{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
-.next .cta a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 13px;border-radius:9px}
-.cta .pr{background:hsl(var(--navy));color:#fff}
+.next .cta a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 13px;border-radius:9px;background:hsl(var(--navy));color:#fff}
 .sec-h{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:hsl(var(--mut));font-weight:700;margin:30px 2px 4px}
 .sec-sub{color:hsl(var(--mut));font-size:14px;margin-bottom:16px}
 .vision{background:hsl(var(--card));border:1px solid hsl(var(--line));border-radius:18px;padding:24px;box-shadow:0 18px 50px -34px hsl(var(--navy)/.6)}
@@ -46,38 +45,27 @@ header .up{margin-left:auto;text-align:right;font-size:12px;opacity:.92}
 .badge{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,hsl(var(--navy)),hsl(var(--cyan)));padding:3px 9px;border-radius:6px}
 .badge.done{background:linear-gradient(135deg,hsl(160,84%,32%),hsl(160,70%,45%))}
 .entry .ts{font-size:12px;color:hsl(var(--mut));font-weight:600;margin-left:auto}
+.entry .meta{font-size:11.5px;color:hsl(var(--mut));margin-bottom:4px}
 .entry h3{font-size:15.5px;font-weight:700;margin-bottom:5px}
-.entry p{font-size:13.5px;margin:5px 0}
 .entry ul{margin:5px 0 0 20px}.entry li{font-size:13px;margin:2px 0}
 .entry .bench{margin-top:9px;font-size:12.5px;background:hsl(var(--cyan)/.08);border-radius:9px;padding:8px 12px;color:hsl(var(--navy))}
+.entry a{color:hsl(var(--navy));font-weight:700;font-size:13px}
 code{background:hsl(220,20%,94%);padding:1px 6px;border-radius:5px;font-size:12.5px}
 .divider{display:flex;align-items:center;gap:12px;margin:22px 4px;color:hsl(var(--mut));font-size:11px;letter-spacing:1px;text-transform:uppercase}
 .divider:before,.divider:after{content:"";flex:1;height:1px;background:hsl(var(--line))}
+.note{font-size:12px;color:hsl(var(--mut));background:hsl(var(--cyan)/.06);border:1px solid hsl(var(--line));border-radius:10px;padding:10px 12px;margin-bottom:14px}
 .foot{text-align:center;color:hsl(var(--mut));font-size:12px;margin-top:24px}
-a{color:hsl(var(--navy));font-weight:600}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <div class="hdot"></div>
   <div><h1>Loren OS — Live Progress &amp; Preview</h1><p>1PropertyMarket · what Claude Cowork is building, updated as we go</p></div>
-  <div class="up">Last updated<br><b>Aug 12, 2026 · 6:05 PM ET</b></div>
+  <div class="up">Last updated<br><b id="updated">…</b></div>
 </div></header>
 
 <div class="wrap">
-
-  <div class="next">
-    <span class="tag">🔆 Here's the next brief</span>
-    <h2>PR-0 shipped — Loren has a home behind a safety switch</h2>
-    <div class="when">Aug 12, 2026 · 5:34 PM ET · Draft PR #152</div>
-    <ul>
-      <li>Stood up <b>Loren OS</b> at a brand-new page, <code>/loren</code>, that only turns on for us — every existing screen is untouched.</li>
-      <li>Added a master <b>on/off switch</b> (feature flag), off by default, so no customer sees it early.</li>
-      <li>Built the approved <b>home screen</b> (Loren orb, ask-bar, tool tiles) in our brand colors.</li>
-      <li>Only <b>2 lines</b> of existing code changed. No screen, database, or function was modified.</li>
-    </ul>
-    <div class="cta"><a class="pr" href="https://github.com/michaelmakabi/onepropertymarket/pull/152" target="_blank">Open the PR (#152)</a></div>
-  </div>
+  <div id="nextbrief"></div>
 
   <div class="sec-h">The vision we're building toward</div>
   <div class="sec-sub">Loren is the AI brain of 1PropertyMarket. You tell her the outcome; she picks the tools, pulls your data, and does the work — one conversation, every capability.</div>
@@ -88,63 +76,47 @@ a{color:hsl(var(--navy));font-weight:600}
     </div>
     <div class="vtitle">Meet <span>Loren</span> — she speaks out of the orb</div>
     <div class="vsub">A calm, pulsating presence in our brand colors. She listens, thinks, and answers — and renders rich results (reports, maps, tables) right in the conversation.</div>
-
     <div class="tools" id="tools"></div>
   </div>
 
   <div class="sec-h">Progress log — newest first</div>
-  <div class="divider">Day 1 · Tuesday, August 12, 2026</div>
+  <div class="note">Every entry shows <b>who</b> did it, <b>when</b>, and <b>where</b> the change landed. Because Lovable commits its changes to the same GitHub repo, both Cowork and Lovable edits show up here — one timeline for the whole project.</div>
+  <div id="log"></div>
 
-  <div class="entry">
-    <div class="head"><span class="badge done">Done</span><span class="badge">PR-0</span><span class="ts">5:28–5:34 PM ET</span></div>
-    <h3>Feature flag + <code>/loren</code> home shell — Draft PR <a href="https://github.com/michaelmakabi/onepropertymarket/pull/152" target="_blank">#152</a></h3>
-    <p>Safe foundation for Loren OS. Everything new lives in its own folder (<code>src/loren/</code>) and its own database table, so it can't collide with anything that already works.</p>
-    <ul>
-      <li><b>New table</b> <code>feature_flags</code> — the on/off switch, admin-only.</li>
-      <li><b>Flag gate</b> — redirects to <code>/dashboard</code> when Loren is off; no customer sees it early.</li>
-      <li><b>Home dashboard</b> — approved design (ask bar + tool tiles), brand-colored.</li>
-      <li><b>+2 lines</b> in <code>App.tsx</code> to mount the page; every other route byte-for-byte identical.</li>
-    </ul>
-    <div class="bench"><b>Benchmark:</b> 5 files · 1 new table · +2 lines to existing code · 0 existing files/routes/functions modified · fully reversible · ~6 min.</div>
-  </div>
-
-  <div class="entry">
-    <div class="head"><span class="badge done">Done</span><span class="badge">Design</span><span class="ts">earlier · Aug 12</span></div>
-    <h3>Design locked: the Loren identity, home, and working session</h3>
-    <p>Approved the visual system before writing app code: the <b>Loren orb</b> (idle / listening / thinking / speaking), <b>Loren's photo radiating out of the orb</b>, the <b>home dashboard</b> with a universal ask-bar + swipeable tool carousel, and the <b>working session</b> (thread + live Deal Analysis artifact + project context). Renamed the assistant from "Mak" to <b>Loren</b> across the product.</p>
-    <div class="bench"><b>Benchmark:</b> 4 interactive prototypes approved · brand palette pulled from the real codebase (navy / cyan / violet).</div>
-  </div>
-
-  <div class="entry">
-    <div class="head"><span class="badge done">Done</span><span class="badge">Audit</span><span class="ts">earlier · Aug 12</span></div>
-    <h3>Repository audit + safe migration blueprint</h3>
-    <p>Read the real <code>onepropertymarket</code> repo (~150 routes, ~180 functions), confirmed the existing wallet, Typesense search, and AI-chat foundations, and wrote the PR-by-PR plan to add Loren <b>additively</b> without touching what works.</p>
-    <div class="bench"><b>Benchmark:</b> 2 planning documents delivered; guardrails agreed (additive · feature-flagged · reversible).</div>
-  </div>
-
-  <div class="foot">Loren OS build log · a new brief is added here after every action · scroll up for the latest.</div>
+  <div class="foot">Loren OS build log · a new brief is added after every action · scroll up for the latest.</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
+/* tool tiles */
 const N="hsl(220,65%,15%)",C="hsl(193,100%,50%)",V="hsl(270,100%,70%)",M="hsl(300,100%,60%)";
 const g=(a,b)=>`linear-gradient(135deg,${a},${b})`;
-const TOOLS=[
- ["🔎","Property Search","Find & match properties",g(N,C)],
- ["📊","Comp & CMA Reports","Instant CUE / CMA",g("hsl(205,70%,22%)",C)],
- ["🧮","Deal Analyzer","Underwrite any deal",g(N,V)],
- ["🌐","Market Intelligence","Demographics · climate · trends",g(C,V)],
- ["👤","People Intelligence","95M owners & contacts",g(V,M)],
- ["🗂️","CRM & Contacts","Your pipeline & relationships",g(N,"hsl(205,70%,40%)")],
- ["🤝","Deal Rooms","Close, together",g("hsl(205,70%,22%)",C)],
- ["📣","Outreach & Voice Agents","Bulk offers + AI calling",g(N,M)],
- ["📝","AI Contracts","LOIs, offers & e-sign",g(N,C)],
- ["💵","AI Accounting","Numbers, handled",g("hsl(205,70%,22%)","hsl(160,70%,42%)")],
- ["🎬","Vision Studio","Media, video & marketing",g(V,M)],
- ["⚙️","Account & Settings","Just tell Loren",g("hsl(220,20%,30%)","hsl(205,70%,40%)")],
-];
+const TOOLS=[["🔎","Property Search","Find & match properties",g(N,C)],["📊","Comp & CMA Reports","Instant CUE / CMA",g("hsl(205,70%,22%)",C)],["🧮","Deal Analyzer","Underwrite any deal",g(N,V)],["🌐","Market Intelligence","Demographics · climate · trends",g(C,V)],["👤","People Intelligence","95M owners & contacts",g(V,M)],["🗂️","CRM & Contacts","Your pipeline & relationships",g(N,"hsl(205,70%,40%)")],["🤝","Deal Rooms","Close, together",g("hsl(205,70%,22%)",C)],["📣","Outreach & Voice Agents","Bulk offers + AI calling",g(N,M)],["📝","AI Contracts","LOIs, offers & e-sign",g(N,C)],["💵","AI Accounting","Numbers, handled",g("hsl(205,70%,22%)","hsl(160,70%,42%)")],["🎬","Vision Studio","Media, video & marketing",g(V,M)],["⚙️","Account & Settings","Just tell Loren",g("hsl(220,20%,30%)","hsl(205,70%,40%)")]];
 document.getElementById('tools').innerHTML=TOOLS.map(t=>`<div class="tool"><div class="band" style="background:${t[3]}"><div class="ic">${t[0]}</div></div><div class="tb"><h4>${t[1]}</h4><p>${t[2]}</p></div></div>`).join('');
 
+/* render the feed */
+function entryHTML(e,highlight){
+  const bullets=(e.bullets||[]).map(b=>`<li>${b}</li>`).join('');
+  const links=(e.links||[]).map(l=>`<a href="${l.url}" target="_blank">${l.label} ↗</a>`).join(' &nbsp; ');
+  if(highlight){
+    return `<div class="next"><span class="tag">🔆 Here's the next brief</span>
+      <h2>${e.title}</h2><div class="when">${e.ts} · ${e.tag}</div>
+      <ul>${bullets}</ul><div class="cta">${links}</div></div>`;
+  }
+  return `<div class="entry"><div class="head"><span class="badge ${e.kind==='done'?'done':''}">${e.kind==='done'?'Done':e.tag}</span><span class="badge">${e.tag}</span><span class="ts">${e.ts}</span></div>
+    <div class="meta">👤 ${e.who||'—'} &nbsp;·&nbsp; 📍 ${e.where||'—'}</div>
+    <h3>${e.title}</h3><ul>${bullets}</ul>
+    ${e.bench?`<div class="bench"><b>Benchmark:</b> ${e.bench}</div>`:''}
+    ${links?`<div style="margin-top:8px">${links}</div>`:''}</div>`;
+}
+fetch('updates.json?ts='+Date.now()).then(r=>r.json()).then(d=>{
+  document.getElementById('updated').textContent=d.updatedLabel||'';
+  const es=d.entries||[];
+  if(es.length) document.getElementById('nextbrief').innerHTML=entryHTML(es[0],true);
+  document.getElementById('log').innerHTML=`<div class="divider">Day 1 · Tuesday, August 12, 2026</div>`+es.map(e=>entryHTML(e,false)).join('');
+}).catch(()=>{document.getElementById('log').innerHTML='<div class="entry">Loading the latest updates…</div>';});
+
+/* orb */
 const cv=document.getElementById('orb');
 const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,0.1,100);cam.position.z=4.0;
 const rn=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});rn.setPixelRatio(Math.min(devicePixelRatio,2));
