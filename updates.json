@@ -1,6 +1,36 @@
 {
-  "updatedLabel": "Aug 12, 2026 · 6:40 PM ET",
+  "updatedLabel": "Aug 12, 2026 · 7:40 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-2",
+      "ts": "Aug 12, 2026 · 7:40 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Loren starts doing things — orchestrator + live Property Search",
+      "bullets": [
+        "Built the <b>orchestrator</b>: Loren now uses real tool-calling to decide what to do, not keyword tricks.",
+        "First live capability — <b>Property Search</b> — runs a real query against our listings and returns matches.",
+        "Added a <b>metering ledger</b> that records every run (what she did, how long, credits) — live tables applied.",
+        "Front-end hook wired so the ask bar can call her. Note: the function deploys through our normal pipeline on merge."
+      ],
+      "bench": "1 orchestrator function · 1 live capability · 3 additive tables live · metering ledger · PR #158",
+      "links": [{ "label": "PR #158", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/158" }]
+    },
+    {
+      "kind": "design",
+      "tag": "Ops",
+      "ts": "Aug 12, 2026 · 7:00 PM ET",
+      "who": "Claude Cowork",
+      "where": "GitHub Pages + GoDaddy DNS",
+      "title": "Custom link updates.1propertymarket.com — one toggle left",
+      "bullets": [
+        "DNS + domain file are set. To finish: in the <code>loren-os-progress</code> repo → Settings → Pages → Source: main → Save. GitHub then issues the HTTPS certificate automatically (a few minutes).",
+        "Until then the certificate warning is expected; use the githack link (works now over HTTPS)."
+      ],
+      "bench": "A-record + CNAME committed · awaiting GitHub Pages enable",
+      "links": []
+    },
     {
       "kind": "done",
       "tag": "PR-1",
@@ -9,12 +39,11 @@
       "where": "GitHub · onepropertymarket",
       "title": "Live orb + drag carousels + conversation memory",
       "bullets": [
-        "Built the real animated <b>Loren orb</b> (idle / listening / thinking / speaking) — it now breathes and reacts when you click the ask bar.",
-        "Made the tool tiles a proper <b>carousel</b>: drag with the mouse, swipe on a phone, or scroll — same on every device.",
-        "Added Loren's <b>conversation memory</b> (two new private tables) so threads persist per user, locked down by row-level security.",
-        "Still 100% behind the flag; still nothing existing touched."
+        "Built the animated <b>Loren orb</b> (idle / listening / thinking / speaking) — reacts when you click the ask bar.",
+        "Tool tiles became a real <b>carousel</b>: drag, swipe, or scroll on any device.",
+        "Added Loren's <b>conversation memory</b> (private, RLS-locked tables)."
       ],
-      "bench": "5 files · 2 new tables · additive · reversible · stacked on PR-0",
+      "bench": "5 files · 2 new tables · additive · reversible · PR #156",
       "links": [{ "label": "PR #156", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/156" }]
     },
     {
@@ -25,12 +54,11 @@
       "where": "GitHub · onepropertymarket",
       "title": "Loren has a home behind a safety switch",
       "bullets": [
-        "Stood up <b>Loren OS</b> at a brand-new page, <code>/loren</code>, that only turns on for us.",
-        "Added a master <b>on/off switch</b> (feature flag), off by default.",
-        "Built the approved <b>home screen</b> in our brand colors.",
+        "Stood up <b>Loren OS</b> at a new page, <code>/loren</code>, that only turns on for us.",
+        "Master <b>on/off switch</b> (feature flag), off by default.",
         "Only <b>2 lines</b> of existing code changed."
       ],
-      "bench": "5 files · 1 new table · +2 lines to existing code · 0 existing files modified · ~6 min",
+      "bench": "5 files · 1 new table · +2 lines to existing code · 0 existing files modified",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
     },
     {
@@ -41,10 +69,10 @@
       "where": "Design review",
       "title": "Design locked: Loren identity, home, and working session",
       "bullets": [
-        "Approved the <b>Loren orb</b>, her <b>photo radiating from the orb</b>, the <b>home dashboard</b>, and the <b>working session</b> (thread + live Deal Analysis + project context).",
+        "Approved the orb, her photo radiating from it, the home dashboard, and the working session.",
         "Renamed the assistant from \"Mak\" to <b>Loren</b> across the product."
       ],
-      "bench": "4 interactive prototypes approved · brand palette from the real codebase",
+      "bench": "4 interactive prototypes approved",
       "links": []
     },
     {
@@ -55,10 +83,9 @@
       "where": "GitHub · onepropertymarket",
       "title": "Repository audit + safe migration blueprint",
       "bullets": [
-        "Read the real repo (~150 routes, ~180 functions), confirmed the wallet, Typesense search, and AI-chat foundations.",
-        "Wrote the PR-by-PR plan to add Loren <b>additively</b> without touching what works."
+        "Read the real repo (~150 routes, ~180 functions); wrote the PR-by-PR plan to add Loren additively."
       ],
-      "bench": "2 planning documents · guardrails agreed (additive · feature-flagged · reversible)",
+      "bench": "2 planning documents · guardrails agreed",
       "links": []
     }
   ]
