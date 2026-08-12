@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Loren OS — Live Progress &amp; Preview</title>
+<style>
+:root{--navy:220 65% 15%;--cyan:193 100% 50%;--violet:270 100% 70%;--ink:222 47% 14%;--mut:220 12% 42%;--line:220 20% 90%;--bg:210 40% 98%;--card:0 0% 100%}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:hsl(var(--bg));color:hsl(var(--ink));line-height:1.55;padding-bottom:60px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,hsl(var(--navy)),hsl(var(--cyan)));color:#fff;padding:24px 0}
+header .wrap{display:flex;align-items:center;gap:14px}
+header .hdot{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,hsl(var(--cyan)) 60%,hsl(var(--navy)));box-shadow:0 0 16px #fff9}
+header h1{font-size:21px;font-weight:800}
+header p{opacity:.9;font-size:12.5px;margin-top:1px}
+header .up{margin-left:auto;text-align:right;font-size:12px;opacity:.92}
+.next{background:#fff7cc;border:1px solid #f2d94e;border-left:6px solid #f2c200;border-radius:12px;padding:16px 18px;margin:22px 0;box-shadow:0 8px 24px -14px #caa60088}
+.next .tag{display:inline-block;background:#f2c200;color:#4a3b00;font-weight:800;font-size:11px;letter-spacing:1px;padding:3px 9px;border-radius:6px;text-transform:uppercase}
+.next h2{font-size:18px;margin:9px 0 3px}
+.next .when{font-size:12px;color:#7a6a1f;font-weight:700;margin-bottom:8px}
+.next ul{margin:6px 0 0 20px}.next li{margin:3px 0;font-size:14px}
+.next .cta{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.next .cta a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 13px;border-radius:9px}
+.cta .pr{background:hsl(var(--navy));color:#fff}
+.sec-h{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:hsl(var(--mut));font-weight:700;margin:30px 2px 4px}
+.sec-sub{color:hsl(var(--mut));font-size:14px;margin-bottom:16px}
+.vision{background:hsl(var(--card));border:1px solid hsl(var(--line));border-radius:18px;padding:24px;box-shadow:0 18px 50px -34px hsl(var(--navy)/.6)}
+.stage{position:relative;width:220px;height:220px;margin:6px auto 4px;display:flex;align-items:center;justify-content:center}
+#orb{position:absolute;inset:-46px;width:calc(100% + 92px);height:calc(100% + 92px)}
+.persona{position:relative;z-index:3;width:150px;height:150px;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 4px hsl(var(--cyan)/.18),0 0 42px 6px hsl(var(--cyan)/.35),0 16px 44px -12px hsl(var(--navy)/.55);
+  -webkit-mask:radial-gradient(circle at 50% 44%,#000 72%,transparent 100%);mask:radial-gradient(circle at 50% 44%,#000 72%,transparent 100%)}
+.persona img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.vtitle{text-align:center;font-size:20px;font-weight:800;margin-top:4px}
+.vtitle span{background:linear-gradient(90deg,hsl(var(--navy)),hsl(var(--cyan)));-webkit-background-clip:text;background-clip:text;color:transparent}
+.vsub{text-align:center;color:hsl(var(--mut));font-size:13.5px;margin:4px auto 18px;max-width:560px}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tool{border:1px solid hsl(var(--line));border-radius:14px;overflow:hidden;background:#fff}
+.tool .band{height:44px;position:relative}
+.tool .ic{position:absolute;top:8px;left:10px;width:28px;height:28px;border-radius:8px;background:#ffffff30;display:flex;align-items:center;justify-content:center;font-size:15px}
+.tool .tb{padding:9px 12px 11px}
+.tool h4{font-size:13.5px;font-weight:700}
+.tool p{font-size:11.5px;color:hsl(var(--mut));margin-top:2px;line-height:1.3}
+.entry{background:#fff;border:1px solid hsl(var(--line));border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:0 10px 30px -24px hsl(var(--navy)/.5)}
+.entry .head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+.badge{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,hsl(var(--navy)),hsl(var(--cyan)));padding:3px 9px;border-radius:6px}
+.badge.done{background:linear-gradient(135deg,hsl(160,84%,32%),hsl(160,70%,45%))}
+.entry .ts{font-size:12px;color:hsl(var(--mut));font-weight:600;margin-left:auto}
+.entry h3{font-size:15.5px;font-weight:700;margin-bottom:5px}
+.entry p{font-size:13.5px;margin:5px 0}
+.entry ul{margin:5px 0 0 20px}.entry li{font-size:13px;margin:2px 0}
+.entry .bench{margin-top:9px;font-size:12.5px;background:hsl(var(--cyan)/.08);border-radius:9px;padding:8px 12px;color:hsl(var(--navy))}
+code{background:hsl(220,20%,94%);padding:1px 6px;border-radius:5px;font-size:12.5px}
+.divider{display:flex;align-items:center;gap:12px;margin:22px 4px;color:hsl(var(--mut));font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.divider:before,.divider:after{content:"";flex:1;height:1px;background:hsl(var(--line))}
+.foot{text-align:center;color:hsl(var(--mut));font-size:12px;margin-top:24px}
+a{color:hsl(var(--navy));font-weight:600}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="hdot"></div>
+  <div><h1>Loren OS — Live Progress &amp; Preview</h1><p>1PropertyMarket · what Claude Cowork is building, updated as we go</p></div>
+  <div class="up">Last updated<br><b>Aug 12, 2026 · 6:05 PM ET</b></div>
+</div></header>
+
+<div class="wrap">
+
+  <div class="next">
+    <span class="tag">🔆 Here's the next brief</span>
+    <h2>PR-0 shipped — Loren has a home behind a safety switch</h2>
+    <div class="when">Aug 12, 2026 · 5:34 PM ET · Draft PR #152</div>
+    <ul>
+      <li>Stood up <b>Loren OS</b> at a brand-new page, <code>/loren</code>, that only turns on for us — every existing screen is untouched.</li>
+      <li>Added a master <b>on/off switch</b> (feature flag), off by default, so no customer sees it early.</li>
+      <li>Built the approved <b>home screen</b> (Loren orb, ask-bar, tool tiles) in our brand colors.</li>
+      <li>Only <b>2 lines</b> of existing code changed. No screen, database, or function was modified.</li>
+    </ul>
+    <div class="cta"><a class="pr" href="https://github.com/michaelmakabi/onepropertymarket/pull/152" target="_blank">Open the PR (#152)</a></div>
+  </div>
+
+  <div class="sec-h">The vision we're building toward</div>
+  <div class="sec-sub">Loren is the AI brain of 1PropertyMarket. You tell her the outcome; she picks the tools, pulls your data, and does the work — one conversation, every capability.</div>
+  <div class="vision">
+    <div class="stage">
+      <canvas id="orb"></canvas>
+      <div class="persona"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHCAkIBgoJCAkMCwoMDxoRDw4ODx8WGBMaJSEnJiQhJCMpLjsyKSw4LCMkM0Y0OD0/QkNCKDFITUhATTtBQj//2wBDAQsMDA8NDx4RER4/KiQqPz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz//wAARCADwAPADASIAAhEBAxEB/8QAHAAAAQQDAQAAAAAAAAAAAAAAAAECBgcDBAUI/8QAQBAAAQMCBAMFBgQEBQMFAAAAAQACAwQRBRIhMQZBUQcTImFxFDKBkaGxI0JSwRUzcrIkNdHh8BZz8SVDYmN0/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAIBEBAQACAgMBAQEBAAAAAAAAAAECEQMhEjFBIhMyQv/aAAwDAQACEQMRAD8AttB2SoQIQkt5pyEDMpRZPSIG21QW9EvNFr7IpoGiXLqlynqmkG6BSOiQDkUmt0yoqYaSmlqKmQRxRNLnvcdAAge+zQSTYDclRfEeO8Aoqg0wqxUTA2LYtQD/AFbKteNePKriCZ9Hh8j6fDQbWGjpvM+Xkoi2IRjM42PTmptF4x9oGDl2WQujda9t/houlh/F2A4hII4cRibKdmS+A/VeegXy5zGXeAZrp8E3tLMklj5jdFenwbtBGoOxHNO3C8/YJxNjnD2X2OqdPTN3p5vE23l0+CtnhHjXDeJYhEw+z1wF3QPO/wDSeaCUAaI5oaeqdcXVDbFFjdO+KEBZGqEaoACyEapQgLJdkIRAhCEUIQhAIQhAhSJeaLIhpRy0S2smkFAmYpQbpAfJKfJFLoqd7V+KnVVS/AqOS1NCf8S4H+Y7k30H3VicZ40MB4Zqq1p/GtkhHV52/wBfgvOQe+acvkcXG+ZxP5ioHxAsIuPFz8lsAh7XZnZR05rA+QHxcvus+G4XiOJSf4Gne+MGxfawv6p1PZJb6ZsLpjLT1tmuNmXHVaFDmbcANNj7p3Vi8P8ACtfA53tDGhkjcrwXbhczGeB66nqHTUIDwdcoOy5f0x26fzy0j4la5u1nfmBWsGzQ1TKmje6KojdmBYbH1C2JIJqecsq4XxSt3Y4bjqFhkf3Ul26EatP7LpO2L11V4cA8Vt4jwssqSG19OAJQNM4/UP3UtFrrzbw/i0uBcSU2IQE90X/iNGxafeHyXo2mlZUU8c8Tw6ORoc1w5gqss6VNadEEElLQqVqALBCBUBCRUKkQE4aqewgsniyQDXVKAqGIQhAIQhFCEIQNt5oJsE5IQiGZT1RlSm45JpdYEnYalBT3bPi5dXUuFRm7YW968D9R0H0+6rhgDYzf5ro8W4l/FuKq6rJux0py/wBI0H2XLcfA0D8xUg2KGilxCugpYxrId+g5lXLhFPHRUkVPCwNYxoAACgnA0UQqKirnLWNZaJhcbeqsek7uRocxzXDqDdeTmytunt4cZMduhCRZE1iEMt1Q6xXF1+oZxlhgrqMysaO+h8TXcyOYVZzAhrHEbaK764Rd27OW2ItqVTfEETYa6eKEhzGuu3Kbr0cGV9OHPjPbQe/8Egbt1Curslxh2JcMupJXXlonZRruw6j5ahUe1/gzEKd9kmJCj4tFJm/Dq43Mt5jUfuvTXlXk0aJ1kDZKiBCS6LqhUIRa6KUC6cBYJuwThsptCoQmm+ZA1CDqhNgQhCqhCEIBCEIEK4/FNb7BwziFTexZC6x87LsqC9rNWKfg98IdY1EjWfDc/ZSigiS4ucTudVlYbTAu1DRdYrHbzWWmBkqQz9bg36p8PdSbCqjDqbCWCtZmc65JB11WzBXRtkBwjEHxPvbI8nX4qQy8K0tXSwFkTQ6MA2tus1BwtBDW986ibc33OmvkvL5Y17PHKdN3h7Ea2dhZW2Lxs4c1tcQ1k9JRE0/80nS6y01DFSVLGxAgHkTdPxOmZWVgjffKByXHrbr8V1USSSvL8XxEsttGDquJjBomOY6hc5zT7xJupzjXDEFRUte2mLrNAvm39eqjGN8LupIZqkNyNtcMB2XoxyxjhnjbEUe7wOaNrrocPVhoMdoawG3dStcfQH/Rcy+hCIyb6ctV3eV62Y9r2Nc06OAITrri8I1oxDhXDqm93OgaHeoFj9l2U2hUqEK6AnDQJEDdNhbpUJDuoFSoSq6DLWSGyVwSclKEQnAaJp3WoBCEIoQhCAOyqTtqqv8ALqRp3zyuH0H7q2XmzVQnazW+08aGBrrtghaz47n7qVYhDmkAJ+GEDE6cu27wX+a2HtDy0dAuebsnGXcHRL6J7XrhtQ10bTfkuyJGd2DcKteH8WkyMjkBzAKb4dMJWhztui+dZqvpTVh7XF9c3pdPq7x11xquPjAxKlrTV0hbJANe7tqFr0kuKYlWsndaCnadQ4alTQlV2GO6jHFhDsOlAt7pXWrJu5aXXsFBuKMWPdOiabkhaxm6l1Ir5xtK8crpWDxArGDck/FbVI0OkGbZfQ+Pm32vLsdrDUcJPgcbmmnc0ehsf3KsBU92MV3dYriGHZvDI3vWjzBsfoVcKQoHmnAC6bzTgm0A3SoAS8kCbpQEgCcEC2SIQqGlN2SndKdVKGX1QUHeyUFSBEIQtKEJEIGTG0bvReZeIKs4hxPXVTjfPM63pewXojieubhvDeIVjv8A2oXEeuwXmdgzT5idTqs/SMwP4gHlZak8dnF/QXWyx34jfVMPjhcLa6qiWYUY5aeGdh1sL2Uhkrqujha+kEcjTu1xsQq2wTE30NR3cp/CJ+SsbDZYa6nDAQ5rhZeTkx1Xt4stxl/i2L5A91C9zTvlAcPok/jmINFxh0waP/rIStpcZoSWUTW1EPIONiE2ZmO1bRFNEKePm7Nc2WOnfbGMYlxBru8gMLGbk7lRLGy0RSzPO4NlJMQ7rD6Ux5uWpKr7GcQNZOGMuIm7DqunHjuvPy5ajRDdrdAtym8O/RNe0AabhoWS1oxbcWuvU8cSTgjEP4VxnRVLjaN7+7f6O0/deiQvK0Ml5WOzZddxyXpbhytOIYBR1Djd7owH/wBQ0P1Cn1a6nNOTQnA3VZKgJL6pVAqVINkLQVCEIEISJUKBjggBKRqkUAR0SJUi0BIlQiq+7YsQ9l4SbStdZ9XKAR/8W6n9lSEZs3MeYsrE7Y8RE+NxUbSSKdlj6nU/t8lW8pysa0clmBY33efXRNEhFxf1WKI2+pSX1VRlgjElWGb5hddugqqrC5g+Mks5tK52Gx562NwGjRqpNLRd5BcDVceS9u/HNRI8O4uhfCA92V9tQU7EeKomwksdmdbQBQoUjm8lkZSuO4XHxj0eVYMQqajFJy55IZybdcSth7mra21lM6ahtHfKo1j0Lo8QaSNLLrx3tx5J01HAukA62TnkZnAG4KxNflkYen+ixPl8a7vM2InDPld1V89mFa2XBXU5eS4ASgHz0P1H1Xn7UvuDurd7JKwEsid7zHOjPo7UfUKVr3FuJwFk2wTjsjJUtkjQnKwIEvJIhAqEm6cqGoQjkgaU02Tzsm89FkACRO2TTurAI0G+yQrRxeuhoMLqaiV4b3cTnW57JtXn7jWo9r4mqp3OBu7X7qKyPLn6LexGqdNUzSOOr3k6rQYMykWjYFI1rnOAAuU4+S6OAUpqsUjaG5i3xZep5BWpJt0uGqN7nSFw3spVDCR4HCyx4JRGKV7JG2e1xuF25KQCVp5FeTPLt7MZqOI+hGcp8dEC4Cy7b6M30CIqazwCLLn5VrTS9mDW2AUex3CXVMwbG273DRTVlPmeegSR0Xe4ixzG3fG0uA66LWF7ZznSlZWlriCLZTqsQF3rucTURpcYqAG5WPdmaOnkuITYgheyPJT4tfCd+SlXAuJOosfiIdkDnNzXOmjh/uovK0tyys1B38itmhlMVUyUEDW6Uj1YNSngKNcPY86vwinnIDyWjN1vzXajr4nDxgt+CsZbo2SXQxzXsDmkEHYhBQKEc0iEChKkCVUIhF0iAOyaBdOKQaFZoQA3TZHtY0uebAJ91xMQqu+rHRNPgi0PmUDqiqfIS5rixnIBQjtAxI02DGEO8dR4Lc7c1Lx4o3F2w1VQ9oeIGpxsxMcLQttboVK1ig1V4nkjmbBOZFlj135p8UYdJnI8DNAOqyvFmEnmd1V00w3MSrI7NMAdUQuxFzRkLy0E8wFA4KV8ngjaTJI5rG/H/ZW/h1BWYBTQOpLmIMAdEdnf7oemWtoXx4lK6JtiTceYKcyMvNnaOG4XTlnjq44qqIWDgWuB3aRyKxsALw4AZh1C8Wc1k9eF3GOMjMQ4aLDIM0/gGi28gBNxfTksYjOfYAeqw3tidA69mmziLjRbcM0GExZpmmWd48RbuAssbQG3v4j7t9Vs0mHB15JhnJ/UvRxYfXn5M/iueOsNZW00tXRgvDR3lgNR10VaFm3MFejcTw6GoAAiFmNsLaKieJMMfhOO1FI9tmXzxnq0r0OG3Pp/dLHat5pjoyxxb+XkVmhALLEeILYjjDgWu5j5KkWP2XV5dQyU73e67borHFiw+aojg/EXYXj0WdxEMp7t5+xV30cveUzXA7X1SFbtLVezuyP/AJZPyXW5XUdlILLrqYRUd/R2cbujOU/sjLeCOaEiByUJicFQ26S+qW1k3msgJQlsj4IMcjxHG552aCSojE9xaZXHV77n4lSLG5DFhM5G7hlHxUcg1o5BzbqgzV1U2kpqp8jrMYzP8LKia+ofW1s88hu+V5cfirN7RMQEWCZWOs6paG6dOaqqLVxulah9g2IMABKdQUjq+tbC11oxq5x2A5lMLTK7Kz3jpbopXgmA1FQ5uHU7fE4h1VINMo5N9VK02uEsI9txFk7WEU8b/ATz1tf5C3zVuCFj4Q0i4sudh+HRYdRxQQtADQBsuvGtSM2uI+gbDK9rdGybeq09WutzCkNXEJAOvVcWpblqTm3cA5efmx+u3Dl8YS4p8LDJK1nNxT2sbZbGHxZqkuto0LhjN13yuptvR0zGtaABc8/JbTgGMsEyIODjm66JZTc2C98eG9scbbgk81AO07BRLRxYoxlzSm0oA3Yd/krDAs0ALXraeOpp5IZmh0cjS1zTzBQjzZKx9JU92SC212O5OadlnZLqHNGoXd4mwCXDqx+HyNJaCX0kn6mndqjMbjG+1j0IRpuuNntc3cahXTw5XiswKkcDrJbN8N/sqRvci21lZPZlViSkkpXG5gdmaPJyhU+fcg9FkwGTJXTQk/zG5h6j/wArBUuIfHGOepTKd3cYrTSH9WU/HRWspUEEICUohpTgkRzQNJTSNU9CgQbIJ1RdIbXVHF4jltFBD+t9z6D/AMrm0jQJpWci0FZ8efnxeFt/CxgB9SVo10ho7VJNmMBzHySCq+0OuccabRtOlM0i3rr9lGo3WjaOuidi1b/Fcbqqs3/GkJF+Q5fRZsPo5KytZBECXOIDWhRqJJwlw/VV9QJYmgNvYSOHu+Y81beE4XT4VSCGnbru553cfNavD1EMOwyGnDQC1ovbmV2RaySFpjhss8ZTNynN0WmSvBJHquJjIMckD+Ru3913TquNj7C+gkI96J4d/wA+a5cs3g6cV1lGmyS7Cei6mDDNSmQ/ncfko3Tz2ppAdSNlMKKEQ0kUf6WgH1XDh7rvzdTTK7QaLEGnPdZHnVDV7HkVhFxTjOF4/jJ9nkr8KpqtwlG5hBJtY8hod9PRSiPiimxOnDsIzTOy3ddurOtwozhuCHHca4mozVyU0H8Qa+bu93tGfw/OynFLhNBhGETU2HUzYWd265GrnG25O5Xe3CWdONmVxuq5dVhUfEPDvdVLiZsznRy82uvoqgxjCZqLEpYahuSUHxA9eo9VeGDOy4PHb9Tvuotx/hD62mFZDH+JE3xEcwuXLNZ104bvCbVGH91IGu90/QqW9ndS6HiZjSbRytyn9vrZRSpZr4tNb26dVu8P1zqXFoXg2Oa1x/z0XJ2X0z8SqkfyYMoWCsdlkBGmQgrLhhz0jZSbh4zfNYqiMvje87uOgWvjCWscHNa5puCLhPXOwOXvcLiBN3R3YfguhqkQbpdkiVA1I46JLpFQIQhSiKVsrJMWqmyEgh9gTtt1XA4/rTR8Jzjd034TSPPf6AqR1kTaCpc+seyMTSEMe52jidbeqgfac/8ABo4WaMcXPNjpoBqixVzBaUka22CsDsxBjq56h9F31rN76/uX6BV7m5t5uuri7O6YQcNwu/NL4yoqcss4Ajmsw2WvDpZZwVpk4JybyulvogddY6yET0ssfORhCdcJO8HPkpZuaWXV2g2HtfLjcNKfzPu4f07qfaXvzXHoMKa3H6jELgtLMsY6E+9/zzXXfobLlx4eMdeXPzrXrBMaSX2d4ZLl8JNt/iopJRcUEPmGKNY105vGZR4Y8+hvbQBvS51UvexkjCx7Q9p3DhcFYTR02VwFPG3MCCWtANivRjlqPPcbbuIcyPiWOJzXVR9qNsr2zRCOwaS4OG5dsQfTZJM3iSL2VzcVbPEReZscrbt0G5Nr7O9FLXYVROv+FbpZxFk12FUVnfhEZhY2cRp09F088WPHNFKOm4gmhc2XE3hwETgIpmaXf4wdNPD8F0J211PVVkXevrKbJamY4tub+8XnnbYeq7xpoBCYzGHNIAIf4ttt1qvp4IiXxwsY627WgLGWUrWMsUJjLXx4xMyVgjJfq0clzYnmOcHZwKlHaNB3PEBkaLCRoOnkorcd7cc7FcnV6F4bqo6nAKOQvHjiBst+dz8to4tLbuNlDOAcYo6bhYe3VMMHcvLbvcASN/3WziXaBhkR7uhilrH3tmtkb9dU3DVTbhnMIalr3AuEl7Da1l21oYZRtpojIHlzpQHO6DTl81vgaKxkoRdIltdUYkIQihCEIIL2sNz8PUrL71I/tKqDExNHC7NO9zWRmwLibXVwdqWuE0I61B/tVRY7cU8pHNrR9SuNt8nXGflGnG1wOSvPg+zeH6DLt3LfsqKPvXKuPgauEvD1IObGZD8F0ck5Y7QLO1wsufFLcLZa/RWI2g5Ln0Wt3nklD1RnJKVrA52qwCWyGzOzaAlBlhzQyvaRodkpmudUC7nC4IWJwsVIMwf0KdmWtmslEiqtjMsbnpmfRMc/zUQrnaLVqH+HdPkksFzqqezSgrHtOt7dTO5kEKENPiaPgpZ2hVAmxCBn6QSokwXeFGolGAUkc8UneAEgi110ailjiILGgWKw8PDL3rfMLfrvdXnt/T0yflfEFjTx/wBA+yyXstelJ9kh/wC237LONQvTPTyU4aoTLlLdNhqEIVUiAQUck1u5REI7Uv8AK6D/AL5/tVT483/BOPpf5q2e1C38Kof/ANB/tVW43Hmw2X+m64Zf6d8P8oafeIU04FxE0wkp3u8N8zVDXC0hUg4WjMuIRxg2zGy6Wucm1uUlaHtFl0GTgjdRNr3UVXLTSG7oXlhPWxsuqyZ4YHW0VjNjt9+OqBNcrjMqiXWut+JxLQStDeDiSs0crWbrTaSdlla241QbftLPIJrn5tQtfu76p4Fm2upEI59ikMoAWKQrXle5ovyVVtGexTHz+a5hqdbFK57iy7dVEZ56iw3XFxGvEbHFx0skq6ssJHPouVHTvxXF6Wj5SyAO1/LufoCs2tSIlx5AabEaVsn818AkeOhdqB8rKNQ6uClnagRJxjMW7Bg+G9h8rKK0rbytaBckgfVPhJ2meCtLXTE83D7Bbddq0DmdE3DY8rDpvqsszc9RCz9UjR9V5vdev/leUAy08TejAPosiQC2nRKvXPTxlvdKmoumkMuUl0gvdCoUnRDTqm3RcqKhPac/8DDouZke75AD91XlfHnpnNPNpH0U27QZe+x2lgvcRQXPq4/7KI1rLRmy8+d/T0YT8oDUNtNqNwpLwUwOx+jYOcjdvVcvEaYZ7j8psuzwM0f9RYeHEt/E1IXTe4xrVS3F4ZG8UVkLt3VDj8Cb/Zb8s1mhjdhot/imGFmMNnBBndC0PtyPX5WXKgb3kgC051uUNOXkPdsumCRZoTIwIowBussTc2pBWojPEDa62G7LE30WX0VQ4JU0FKDZBglbqsJsRlK2n2JWrILFByq2BzHXHNYYJyx2V2y7T2tkYbgEri1UJY/RRWhizMsjZBq133WthFQKbiCkmOwJB+IIXSewT07oX89WnoVhwWkaytqqqW5NLA5zWdXHQLFaiu+MZHTY1UTPcXPfKR5Wbp97/Jc3Coi+sYeQcCuxxPSVEdTDHUhrZSNWjdvkfjdYsLpTHOB5BTK9N4ztKKNvgT2t/wDUaUdZ2f3BPpG+CxSy/h1EMn6JGn6heee3e+l1fmKEy/Mc0hJK9k9PGyJVjDjzT+SI/9k=" alt="Loren"/></div>
+    </div>
+    <div class="vtitle">Meet <span>Loren</span> — she speaks out of the orb</div>
+    <div class="vsub">A calm, pulsating presence in our brand colors. She listens, thinks, and answers — and renders rich results (reports, maps, tables) right in the conversation.</div>
+
+    <div class="tools" id="tools"></div>
+  </div>
+
+  <div class="sec-h">Progress log — newest first</div>
+  <div class="divider">Day 1 · Tuesday, August 12, 2026</div>
+
+  <div class="entry">
+    <div class="head"><span class="badge done">Done</span><span class="badge">PR-0</span><span class="ts">5:28–5:34 PM ET</span></div>
+    <h3>Feature flag + <code>/loren</code> home shell — Draft PR <a href="https://github.com/michaelmakabi/onepropertymarket/pull/152" target="_blank">#152</a></h3>
+    <p>Safe foundation for Loren OS. Everything new lives in its own folder (<code>src/loren/</code>) and its own database table, so it can't collide with anything that already works.</p>
+    <ul>
+      <li><b>New table</b> <code>feature_flags</code> — the on/off switch, admin-only.</li>
+      <li><b>Flag gate</b> — redirects to <code>/dashboard</code> when Loren is off; no customer sees it early.</li>
+      <li><b>Home dashboard</b> — approved design (ask bar + tool tiles), brand-colored.</li>
+      <li><b>+2 lines</b> in <code>App.tsx</code> to mount the page; every other route byte-for-byte identical.</li>
+    </ul>
+    <div class="bench"><b>Benchmark:</b> 5 files · 1 new table · +2 lines to existing code · 0 existing files/routes/functions modified · fully reversible · ~6 min.</div>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="badge done">Done</span><span class="badge">Design</span><span class="ts">earlier · Aug 12</span></div>
+    <h3>Design locked: the Loren identity, home, and working session</h3>
+    <p>Approved the visual system before writing app code: the <b>Loren orb</b> (idle / listening / thinking / speaking), <b>Loren's photo radiating out of the orb</b>, the <b>home dashboard</b> with a universal ask-bar + swipeable tool carousel, and the <b>working session</b> (thread + live Deal Analysis artifact + project context). Renamed the assistant from "Mak" to <b>Loren</b> across the product.</p>
+    <div class="bench"><b>Benchmark:</b> 4 interactive prototypes approved · brand palette pulled from the real codebase (navy / cyan / violet).</div>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="badge done">Done</span><span class="badge">Audit</span><span class="ts">earlier · Aug 12</span></div>
+    <h3>Repository audit + safe migration blueprint</h3>
+    <p>Read the real <code>onepropertymarket</code> repo (~150 routes, ~180 functions), confirmed the existing wallet, Typesense search, and AI-chat foundations, and wrote the PR-by-PR plan to add Loren <b>additively</b> without touching what works.</p>
+    <div class="bench"><b>Benchmark:</b> 2 planning documents delivered; guardrails agreed (additive · feature-flagged · reversible).</div>
+  </div>
+
+  <div class="foot">Loren OS build log · a new brief is added here after every action · scroll up for the latest.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const N="hsl(220,65%,15%)",C="hsl(193,100%,50%)",V="hsl(270,100%,70%)",M="hsl(300,100%,60%)";
+const g=(a,b)=>`linear-gradient(135deg,${a},${b})`;
+const TOOLS=[
+ ["🔎","Property Search","Find & match properties",g(N,C)],
+ ["📊","Comp & CMA Reports","Instant CUE / CMA",g("hsl(205,70%,22%)",C)],
+ ["🧮","Deal Analyzer","Underwrite any deal",g(N,V)],
+ ["🌐","Market Intelligence","Demographics · climate · trends",g(C,V)],
+ ["👤","People Intelligence","95M owners & contacts",g(V,M)],
+ ["🗂️","CRM & Contacts","Your pipeline & relationships",g(N,"hsl(205,70%,40%)")],
+ ["🤝","Deal Rooms","Close, together",g("hsl(205,70%,22%)",C)],
+ ["📣","Outreach & Voice Agents","Bulk offers + AI calling",g(N,M)],
+ ["📝","AI Contracts","LOIs, offers & e-sign",g(N,C)],
+ ["💵","AI Accounting","Numbers, handled",g("hsl(205,70%,22%)","hsl(160,70%,42%)")],
+ ["🎬","Vision Studio","Media, video & marketing",g(V,M)],
+ ["⚙️","Account & Settings","Just tell Loren",g("hsl(220,20%,30%)","hsl(205,70%,40%)")],
+];
+document.getElementById('tools').innerHTML=TOOLS.map(t=>`<div class="tool"><div class="band" style="background:${t[3]}"><div class="ic">${t[0]}</div></div><div class="tb"><h4>${t[1]}</h4><p>${t[2]}</p></div></div>`).join('');
+
+const cv=document.getElementById('orb');
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,0.1,100);cam.position.z=4.0;
+const rn=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});rn.setPixelRatio(Math.min(devicePixelRatio,2));
+function sz(){const r=cv.getBoundingClientRect();rn.setSize(r.width,r.height,false);}
+const navy=new THREE.Color().setHSL(220/360,.65,.15),cyan=new THREE.Color().setHSL(193/360,1,.5),vio=new THREE.Color().setHSL(270/360,1,.7);
+const noise=`vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x,289.0);}vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+2.0*C.xxx;vec3 x3=x0-1.0+3.0*C.xxx;i=mod(i,289.0);vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));float n_=1.0/7.0;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.0*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}`;
+const U={t:{value:0},l:{value:0},a:{value:navy},b:{value:cyan},c:{value:vio}};
+const mat=new THREE.ShaderMaterial({uniforms:U,transparent:true,
+ vertexShader:`${noise}uniform float t,l;varying float vN;varying vec3 vNo,vVi;void main(){float tt=t*0.5;float n=snoise(normal*1.6+vec3(tt));float d=n*(0.18+l*0.3);vN=d;vec3 p=position+normal*d;vNo=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(p,1.0);vVi=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+ fragmentShader:`uniform vec3 a,b,c;varying float vN;varying vec3 vNo,vVi;void main(){float f=pow(1.0-max(dot(vNo,vVi),0.0),2.2);float h=smoothstep(-0.2,0.35,vN);vec3 col=mix(a,b,h);col=mix(col,c,f*0.9);col+=b*f*0.6;gl_FragColor=vec4(col,0.5+0.5*f);}`});
+const orb=new THREE.Mesh(new THREE.IcosahedronGeometry(1,96),mat);scene.add(orb);
+const N2=520,pg=new THREE.BufferGeometry(),pp=new Float32Array(N2*3);
+for(let i=0;i<N2;i++){const an=Math.random()*6.283,r=1.55+Math.random()*0.7,y=(Math.random()-0.5)*0.4;pp[i*3]=Math.cos(an)*r;pp[i*3+1]=y;pp[i*3+2]=Math.sin(an)*r;}
+pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+const halo=new THREE.Points(pg,new THREE.PointsMaterial({size:0.02,color:cyan,transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false}));halo.rotation.x=1.3;scene.add(halo);
+const ck=new THREE.Clock();sz();
+(function go(){const tm=ck.getElapsedTime();U.t.value=tm;U.l.value=0.35+0.35*Math.sin(tm*2.2);orb.rotation.y+=0.002;orb.rotation.x=Math.sin(tm*0.3)*0.15;halo.rotation.z+=0.0012;orb.scale.setScalar(1+U.l.value*0.05);rn.render(scene,cam);requestAnimationFrame(go);})();
+addEventListener('resize',sz);
+</script>
+</body>
+</html>
