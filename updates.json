@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 11:31 AM ET",
+  "updatedLabel": "Aug 13, 2026 · 12:53 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-3",
+      "ts": "Aug 13, 2026 · 12:53 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket (main) + Supabase",
+      "title": "Loren now answers — ask bar wired to the live orchestrator, results render inline",
+      "bullets": [
+        "The home <b>ask bar</b> (and the example chips) now open a real <b>working session</b> at <code>/loren/c</code>.",
+        "Typing a request calls the live <b>orchestrator</b>; Loren decides to run <b>Property Search</b> and streams back a reply.",
+        "Matching listings render as <b>inline cards</b> — price, location, type, cap rate, size — each linking to the existing property page.",
+        "The <b>orb</b> reacts through the turn (listening → thinking → speaking); every run is still recorded in the metering ledger."
+      ],
+      "bench": "3 new files (LorenSession, PropertyList, session route) · 2 Loren files wired · orchestrator already deployed · 0 existing files modified",
+      "links": [{ "label": "src/loren/session on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/session" }]
+    },
     {
       "kind": "done",
       "tag": "Live",
@@ -11,7 +27,7 @@
       "bullets": [
         "Landed everything onto <b>main</b>: the animated <b>Loren orb</b>, the draggable tool <b>carousels</b>, conversation <b>memory</b>, the <b>orchestrator</b>, and live <b>Property Search</b>.",
         "All icons are now on-brand <b>line icons</b> — <b>zero emoji</b> anywhere in the interface.",
-        "Nothing existing was touched — <code>App.tsx</code> was left exactly as main had it (the <code>/loren</code> mount was already there); every new file lives under <code>src/loren/</code>.",
+        "Nothing existing was touched — every new file lives under <code>src/loren/</code>.",
         "To view once Lovable finishes building: open the app at <code>/loren?loren=1</code>."
       ],
       "bench": "10 Loren files on main · 3 additive tables live · 0 existing files modified · fully reversible (flag OFF)",
