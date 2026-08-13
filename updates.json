@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 5:25 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 5:45 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-12",
+      "ts": "Aug 13, 2026 · 5:45 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v14)",
+      "title": "Inline property profile — click a listing, page prev/next without leaving the chat",
+      "bullets": [
+        "Results show as your real listing <b>cards</b> in the conversation; clicking one opens the <b>real property page inline</b> (/loren/p/:id) inside the Loren shell.",
+        "A slim header gives <b>Back to conversation</b> and <b>Prev / Next</b> to page through the whole result set (with '3 of 24').",
+        "The full, filterable <b>/search page</b> is still one tap away via the <b>Full search page</b> toggle.",
+        "Why the cards (not the full page) for clicking: your card's PIN badge isn't the database id, so the only reliable way to know which listing you clicked is to render the real card grid where Loren holds the actual listing."
+      ],
+      "bench": "orchestrator v14 · inline profile route · prev/next · full-page toggle · 0 existing files modified",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
     {
       "kind": "done",
       "tag": "PR-11",
@@ -8,14 +24,9 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
       "title": "Dedicated /loren page, home redesign, saved conversations",
-      "bullets": [
-        "<b>/loren is now a dedicated always-on page</b> — just visit yoursite.com/loren, no key, no digging in Lovable.",
-        "<b>Home redesign</b>: full-width (dead margins gone), big tool cards with large on-brand icons and consistent gradient styling.",
-        "<b>Conversations are saved like ChatGPT/Claude</b> — auto-named threads. A new <b>Chats</b> list (rail) shows them all, and <b>Jump back in</b> on the home reopens your recent ones. Threads reopen at /loren/c/:id and continue where you left off.",
-        "Next: inline property profile (click a listing → prev/next in the conversation), then the Activity + Projects surfaces."
-      ],
-      "bench": "dedicated page · full-width home · big cards · saved + reopenable threads · 0 existing files modified",
-      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+      "bullets": ["/loren is a dedicated always-on page; full-width home with big on-brand cards; saved threads (Chats + Jump back in), reopenable."],
+      "bench": "dedicated page · saved threads",
+      "links": []
     },
     {
       "kind": "done",
@@ -24,30 +35,19 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
       "title": "Fast direct-mount search, pagination, full-width",
-      "bullets": ["Removed the iframe that re-booted the whole app (the 20-30s); direct-mount renders in ~1-2s with real pagination, full-width."],
-      "bench": "direct-mount · pagination",
+      "bullets": ["Removed the iframe that re-booted the whole app; ~1-2s render, real pagination, full-width."],
+      "bench": "fast search",
       "links": []
     },
     {
       "kind": "done",
-      "tag": "PR-9",
+      "tag": "PR-6→9",
       "ts": "Aug 13, 2026 · 4:34 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Linked data, highlighter, bigger orb",
-      "bullets": ["Page is the single source of truth; Sharpie highlighter + gradient links; orb larger than the photo with movement everywhere."],
+      "title": "Real UI inline, page source-of-truth, highlighter, bigger orb",
+      "bullets": ["Search renders via your real components; page owns the count; highlighter + gradient links; orb larger than the photo."],
       "bench": "orchestrator v13",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-6→8",
-      "ts": "Aug 13, 2026 · 4:16 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Real product UI inline; full search page embedded; formatted replies; credits",
-      "bullets": ["Search renders via your actual components / full page; markdown replies; credits per turn + session total."],
-      "bench": "real components",
       "links": []
     },
     {
