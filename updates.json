@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 6:05 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 6:35 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-14",
+      "ts": "Aug 13, 2026 · 6:35 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Projects — group conversations into on-brand folders",
+      "bullets": [
+        "New dedicated page at <b>/loren/projects</b> and the <b>Projects</b> rail item is now live — create named folders (deals, markets, campaigns) with a color swatch, each shown as an on-brand card with its conversations.",
+        "An <b>Unfiled</b> bucket collects any conversation not yet in a project, so nothing gets lost.",
+        "From <b>Chats</b>, every conversation now has a compact <b>project picker</b> — file a thread into any project in one click; clicking a thread inside a project reopens it.",
+        "New owner-scoped <b>loren_projects</b> table with the same RLS pattern as your other Loren tables; conversations link via their existing project_id. Additive — 0 existing product files touched."
+      ],
+      "bench": "loren_projects table + RLS + FK · projects route & rail · per-row filing in Chats",
+      "links": [{ "label": "src/loren/projects on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/projects" }]
+    },
     {
       "kind": "done",
       "tag": "PR-13",
