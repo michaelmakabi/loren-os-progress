@@ -1,21 +1,32 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 2:36 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 2:56 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-7",
+      "ts": "Aug 13, 2026 · 2:56 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v11)",
+      "title": "Readable replies, credits shown per turn, in-conversation follow-ups",
+      "bullets": [
+        "Loren's replies are now <b>clean formatted markdown</b> — short lead line, bold figures, bullet lists, spacing. No more asterisks or run-on paragraphs. When cards render, she keeps the text short.",
+        "<b>Credits are shown</b> on every turn, with a running <b>session total</b> in the header (this is the metering you'll see per input/output).",
+        "Removed the 'open in a new page' hand-off — follow-ups stay in the conversation. Added a <b>New thread</b> action for unrelated tasks.",
+        "Groundwork for the bigger vision (full page embedded inline, activity/memory hub, perpetual learning) — plan shared with Master Makabi."
+      ],
+      "bench": "orchestrator v11 · markdown replies · credit meter visible · new-thread · 0 existing files modified",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
     {
       "kind": "done",
       "tag": "PR-6",
       "ts": "Aug 13, 2026 · 2:36 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v10)",
-      "title": "Loren now shows the REAL product UI inline — no more look-alike components",
-      "bullets": [
-        "Course-correction: Loren's search results in the conversation are now rendered by the <b>exact components the /search tab uses</b> — <code>SearchListingsGrid</code> / <code>SearchListingCard</code> and <code>ListingsTableView</code> — fed by the same <code>adaptDatabaseListing</code> adapter.",
-        "Deleted the parallel card/table I had built. Loren <b>reuses existing code</b>; she just performs the action for you and the product's own UI displays it.",
-        "The orchestrator now returns full listing rows so the real cards render identically (images, badges, everything). Cards / table toggle and 'Open all in the search table' remain.",
-        "Same pattern comes next for the <b>Analyzer</b> and <b>Comp/CMA</b> tabs — reuse their real result components too."
-      ],
-      "bench": "orchestrator v10 · real /search components inline · 2 look-alike files removed · 0 existing files modified",
-      "links": [{ "label": "src/loren/session on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/session" }]
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Loren shows the REAL product UI inline (no look-alikes)",
+      "bullets": ["Search results render via your actual SearchListingsGrid / SearchListingCard / ListingsTableView; parallel components deleted."],
+      "bench": "orchestrator v10 · real components inline",
+      "links": []
     },
     {
       "kind": "done",
@@ -23,20 +34,9 @@
       "ts": "Aug 13, 2026 · 2:18 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Deal Analyzer capability + inline results",
-      "bullets": ["Loren wraps the existing analyze-deal engine and renders the report inline; results gained a cards/table toggle."],
+      "title": "Deal Analyzer capability",
+      "bullets": ["Loren wraps the existing analyze-deal engine and renders its report inline."],
       "bench": "orchestrator v7 · 2 capabilities",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-4.2",
-      "ts": "Aug 13, 2026 · 2:02 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Clean geo results, bigger Loren everywhere, dated timestamps",
-      "bullets": ["Place names strictly geographic (Aventura correctly 4); Loren's portrait on every orb; dated timestamps."],
-      "bench": "geo-only matching · persona everywhere",
       "links": []
     },
     {
@@ -45,9 +45,9 @@
       "ts": "Aug 13, 2026 · 1:00 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Loren returns REAL listings — search fixed, live counts, dictation, hybrid hand-off",
-      "bullets": ["Real data source (18,080 live), true counts, voice dictation, and Open-all-in-/search hand-off."],
-      "bench": "real data · dictation · deep-link",
+      "title": "Real listings, clean geo results, dictation, Loren's portrait, dated stamps",
+      "bullets": ["Fixed search to the real 18,080 listings, geo-accurate; voice dictation; Loren on every orb."],
+      "bench": "real data · dictation · persona",
       "links": []
     },
     {
@@ -56,8 +56,8 @@
       "ts": "Aug 13, 2026 · 12:53 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "Orb, carousels, memory, orchestrator, live Property Search, working session",
-      "bullets": ["The full Loren foundation on main behind the flag; the ask bar opens a live working session."],
+      "title": "Orb, carousels, memory, orchestrator, live search, working session",
+      "bullets": ["The Loren foundation on main behind the flag; the ask bar opens a live working session."],
       "bench": "on main · 3 additive tables live",
       "links": []
     },
