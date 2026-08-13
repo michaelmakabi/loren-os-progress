@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 6:35 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 7:05 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-15",
+      "ts": "Aug 13, 2026 · 7:05 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v16)",
+      "title": "Perpetual memory — Loren remembers you, your business, and your team",
+      "bullets": [
+        "New <b>Memory</b> page at <b>/loren/memory</b> and rail item — everything Loren knows, grouped into <b>About you</b>, <b>Your business</b>, and <b>Your team</b>. Add, pin, or remove any fact.",
+        "Loren now <b>uses</b> that memory: the orchestrator loads your facts into every reply, so she personalizes answers and won't re-ask what she already knows.",
+        "Loren now <b>learns</b>: a new <b>remember</b> tool lets her save durable facts as you work (only stable things — preferences, business details, team roles — never one-off requests). Saved facts appear on the Memory page and in Activity.",
+        "New owner-scoped <b>loren_memory</b> table (same RLS pattern); the surface and the agent share one source of truth. Additive — 0 existing product files touched."
+      ],
+      "bench": "loren_memory table + RLS · memory injected into every reply · remember tool · orchestrator v16",
+      "links": [{ "label": "src/loren/memory on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/memory" }]
+    },
     {
       "kind": "done",
       "tag": "PR-14",
