@@ -1,17 +1,32 @@
 {
-  "updatedLabel": "Aug 12, 2026 · 7:45 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 11:31 AM ET",
   "entries": [
     {
       "kind": "done",
       "tag": "Live",
+      "ts": "Aug 13, 2026 · 11:31 AM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket (main) → Lovable",
+      "title": "PR-1 + PR-2 are now on main — the full Loren upgrade is live behind the flag",
+      "bullets": [
+        "Landed everything onto <b>main</b>: the animated <b>Loren orb</b>, the draggable tool <b>carousels</b>, conversation <b>memory</b>, the <b>orchestrator</b>, and live <b>Property Search</b>.",
+        "All icons are now on-brand <b>line icons</b> — <b>zero emoji</b> anywhere in the interface.",
+        "Nothing existing was touched — <code>App.tsx</code> was left exactly as main had it (the <code>/loren</code> mount was already there); every new file lives under <code>src/loren/</code>.",
+        "To view once Lovable finishes building: open the app at <code>/loren?loren=1</code>."
+      ],
+      "bench": "10 Loren files on main · 3 additive tables live · 0 existing files modified · fully reversible (flag OFF)",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
+    {
+      "kind": "done",
+      "tag": "PR-0",
       "ts": "Aug 12, 2026 · 7:45 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "PR-0 merged to main — Loren is now live behind the flag",
+      "title": "PR-0 merged to main — Loren first went live behind the flag",
       "bullets": [
-        "Merged the flag + <code>/loren</code> home shell into <b>main</b>, so Lovable deploys it.",
-        "Customers see nothing (flag off). To view: open the app at <code>/loren?loren=1</code>.",
-        "Verifying this loads and everything else is untouched before merging PR-1 and PR-2."
+        "Merged the flag + <code>/loren</code> home shell into <b>main</b>.",
+        "Customers see nothing (flag off). To view: open the app at <code>/loren?loren=1</code>."
       ],
       "bench": "squash-merged · additive · flag OFF · reversible",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
@@ -28,8 +43,8 @@
         "First live capability — <b>Property Search</b> — queries our listings and returns matches.",
         "Added a <b>metering ledger</b> for every run; live tables applied."
       ],
-      "bench": "1 orchestrator function · 1 live capability · 3 additive tables live · PR #158",
-      "links": [{ "label": "PR #158", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/158" }]
+      "bench": "1 orchestrator function · 1 live capability · 3 additive tables live",
+      "links": []
     },
     {
       "kind": "done",
@@ -43,8 +58,8 @@
         "Tool tiles became a real <b>carousel</b>: drag, swipe, or scroll.",
         "Loren's <b>conversation memory</b> (private, RLS-locked tables)."
       ],
-      "bench": "5 files · 2 new tables · PR #156",
-      "links": [{ "label": "PR #156", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/156" }]
+      "bench": "5 files · 2 new tables",
+      "links": []
     },
     {
       "kind": "done",
