@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 5:45 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 6:05 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-13",
+      "ts": "Aug 13, 2026 · 6:05 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket",
+      "title": "Activity board — a live, branded timeline of everything Loren does",
+      "bullets": [
+        "New dedicated page at <b>/loren/activity</b> and an <b>Activity</b> item in the home rail — a Basecamp-style, day-grouped feed of every action Loren has taken.",
+        "Each row shows what was asked, the <b>capability</b> that ran (Search · Deal analysis · Results · Conversation) with its own on-brand icon, the <b>time</b>, <b>credits used</b>, and how long it took.",
+        "Clicking any item that belongs to a thread <b>reopens that conversation</b> (/loren/c/:id) so you jump straight back in.",
+        "Reads the live <b>loren_agent_runs</b> log (owner-scoped), so it's your real history — not a mockup. Full-width, on-brand navy/cyan/violet."
+      ],
+      "bench": "activity route + home rail · loren_agent_runs feed · click-to-reopen · 0 existing files modified",
+      "links": [{ "label": "src/loren/activity on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/activity" }]
+    },
     {
       "kind": "done",
       "tag": "PR-12",
