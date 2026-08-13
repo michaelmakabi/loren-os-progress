@@ -1,21 +1,32 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 4:34 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 4:44 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-10",
+      "ts": "Aug 13, 2026 · 4:44 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket",
+      "title": "Search is now fast, paginated, and full-width",
+      "bullets": [
+        "<b>Speed fixed.</b> The search was in an iframe that re-booted the entire app (all providers) every time — that was the 20-30s. It now mounts the real search page <b>directly</b> in the conversation, reusing the already-running app, so it renders in ~1-2s like the normal page.",
+        "<b>Pagination is back.</b> Because the page renders in the natural flow (not a fixed frame), its own pagination shows at the bottom of the results, and there's no scroll-within-scroll.",
+        "<b>Full width.</b> The working session and every inline now max out the screen with responsive margins (desktop → tablet → mobile). No more tablet-like dead space.",
+        "Only the latest search stays live; earlier searches collapse to a one-line recap with a Show live results button."
+      ],
+      "bench": "direct-mount (no iframe) · real pagination · full-width responsive · 0 existing files modified",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
     {
       "kind": "done",
       "tag": "PR-9",
       "ts": "Aug 13, 2026 · 4:34 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v13)",
-      "title": "Linked data, full-width auto-sizing page, highlighter, bigger orb",
-      "bullets": [
-        "<b>Data is now linked</b> — Loren no longer runs her own count. The embedded search page is the single source of truth for the number and the listings, so the reply and the page can't disagree (the old 4-vs-1,238 mismatch is gone).",
-        "<b>No more scroll-within-scroll or tablet margins</b> — the inline page auto-sizes to its full content and the conversation uses the full screen width. It never opens a separate page.",
-        "Loren can now <b>highlight</b> key text like a real Sharpie (yellow / green / red / orange) and render <b>illuminated gradient links</b>.",
-        "The <b>orb is now larger than Loren's photo</b> — her portrait sits inside the moving, glowing orb, consistent on every instance (header, composer, each message)."
-      ],
-      "bench": "orchestrator v13 · page = source of truth · auto-height embed · highlighter · orb > photo · 0 existing files modified",
-      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Linked data, highlighter, bigger orb",
+      "bullets": ["The page is the single source of truth (no competing count); Sharpie highlighter + gradient links; the orb is larger than Loren's photo with visible movement everywhere."],
+      "bench": "orchestrator v13",
+      "links": []
     },
     {
       "kind": "done",
@@ -23,31 +34,20 @@
       "ts": "Aug 13, 2026 · 4:16 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
-      "title": "The entire Search page embedded inline in the conversation",
-      "bullets": ["The real /search page renders in the chat, seeded with Loren's filters, fully operable, isolated by an error boundary."],
-      "bench": "embed route · real page inline",
+      "title": "The entire Search page embedded inline",
+      "bullets": ["The real /search page renders in the chat, seeded with Loren's filters, fully operable."],
+      "bench": "inline page",
       "links": []
     },
     {
       "kind": "done",
-      "tag": "PR-7",
+      "tag": "PR-6→7",
       "ts": "Aug 13, 2026 · 2:56 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Readable replies, credits per turn, in-conversation follow-ups",
-      "bullets": ["Formatted markdown; credits per turn + session total; New thread; follow-ups stay in the chat."],
+      "title": "Real product UI inline; formatted replies; credits; New thread",
+      "bullets": ["Search renders via your actual components; markdown replies; credits per turn + session total."],
       "bench": "orchestrator v11",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-6",
-      "ts": "Aug 13, 2026 · 2:36 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Loren shows the REAL product UI inline (no look-alikes)",
-      "bullets": ["Search results render via your actual product components."],
-      "bench": "orchestrator v10",
       "links": []
     },
     {
@@ -57,7 +57,7 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
       "title": "Real listings, geo-accurate search, dictation, Deal Analyzer",
-      "bullets": ["Real 18,080 listings; voice dictation; Loren on every orb; Deal Analyzer wraps the existing engine."],
+      "bullets": ["Real 18,080 listings; voice dictation; Deal Analyzer wraps the existing engine."],
       "bench": "real data · analyzer",
       "links": []
     },
