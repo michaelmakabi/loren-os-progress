@@ -1,37 +1,49 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 1:00 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 1:41 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-4.1",
+      "ts": "Aug 13, 2026 · 1:41 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v4)",
+      "title": "Accurate search + hybrid hand-off to the real table + dictation + Loren's face on the orb",
+      "bullets": [
+        "Fixed a location false-positive (an Aventura search was pulling a Puerto Rico listing whose address contained 'Aventura'); location now matches city/state only.",
+        "Every result now has follow-up actions — the main one is <b>Open all N in the search table</b>, which hands off to your existing full <code>/search</code> results grid, <b>pre-filtered</b> (the hybrid: Loren orchestrates, your real UI renders).",
+        "Counts are honest — 'how many for sale' returns the true total (~17,800), and the preview shows 'showing X of N'.",
+        "<b>Voice dictation</b> now works on the mic button, and <b>Loren's portrait</b> now radiates from the orb in the working session, as in the original identity."
+      ],
+      "bench": "orchestrator v4 live · deep-link filters echoed · Web Speech dictation · Loren persona orb · 0 existing files modified",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
     {
       "kind": "done",
       "tag": "PR-4",
       "ts": "Aug 13, 2026 · 1:00 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v3)",
-      "title": "Loren now returns REAL listings — search bug fixed, live counts, timestamps",
+      "title": "Loren returns REAL listings — search bug fixed, live counts, timestamps",
       "bullets": [
-        "Fixed the search: it was asking the database for a column that doesn't exist, so every search silently returned <b>zero</b>. Loren now queries the real <b>listings</b> table the same way the site does (approved + active — 18,080 live listings).",
-        "Loren now reports the <b>true total</b> — 'how many properties for sale in Aventura' returns the actual number, and results show 'showing X of N matches'.",
-        "Property-type wording is normalized, so typing <b>multifamily</b> correctly matches <b>Multi-Family</b> in the data.",
-        "Added <b>timestamps</b> under every message, and bound credit metering to the <b>BRiX wallet</b> — kept in <b>ledger-only</b> mode (records cost, charges nothing) until we flip it on.",
-        "Model is <b>gpt-4o-mini</b> — the cost-effective choice for routing and short summaries."
+        "The search was asking for a column that doesn't exist, so it silently returned zero. Loren now queries the real listings the same way the site does (18,080 live).",
+        "Property-type wording normalized (multifamily → Multi-Family). Added message timestamps. Bound metering to the BRiX wallet in ledger-only mode."
       ],
-      "bench": "orchestrator v3 deployed live · real data source · true counts · timestamps · brix binding (ledger-only) · 0 existing files modified",
-      "links": [{ "label": "loren-orchestrator source", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-orchestrator/index.ts" }]
+      "bench": "orchestrator v3 · real data source · timestamps · brix binding (ledger-only)",
+      "links": []
     },
     {
       "kind": "done",
       "tag": "PR-3",
       "ts": "Aug 13, 2026 · 12:53 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket (main) + Supabase",
-      "title": "Loren now answers — ask bar wired to the live orchestrator, results render inline",
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Loren answers — ask bar wired to the live orchestrator, results render inline",
       "bullets": [
-        "The home <b>ask bar</b> (and the example chips) now open a real <b>working session</b> at <code>/loren/c</code>.",
-        "Typing a request calls the live <b>orchestrator</b>; Loren decides to run <b>Property Search</b> and streams back a reply.",
-        "Matching listings render as <b>inline cards</b> — price, location, type, cap rate, size — each linking to the existing property page."
+        "The home ask bar opens a real working session at <code>/loren/c</code>; Loren runs Property Search and replies.",
+        "Matching listings render as inline cards linking to the existing property page."
       ],
-      "bench": "3 new files (LorenSession, PropertyList, session route) · 2 Loren files wired · 0 existing files modified",
-      "links": [{ "label": "src/loren/session on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/session" }]
+      "bench": "3 new files · 0 existing files modified",
+      "links": []
     },
     {
       "kind": "done",
@@ -39,13 +51,12 @@
       "ts": "Aug 13, 2026 · 11:31 AM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "PR-1 + PR-2 are now on main — the full Loren upgrade is live behind the flag",
+      "title": "PR-1 + PR-2 on main — orb, carousels, memory, orchestrator, Property Search",
       "bullets": [
-        "Landed everything onto <b>main</b>: the animated <b>Loren orb</b>, the draggable tool <b>carousels</b>, conversation <b>memory</b>, the <b>orchestrator</b>, and live <b>Property Search</b>.",
-        "All icons are on-brand <b>line icons</b> — <b>zero emoji</b>.",
-        "To view: open the app at <code>/loren?loren=1</code>."
+        "Landed the animated orb, draggable carousels, conversation memory, and live Property Search onto main.",
+        "All on-brand line icons — zero emoji. View at <code>/loren?loren=1</code>."
       ],
-      "bench": "10 Loren files on main · 3 additive tables live · 0 existing files modified",
+      "bench": "10 Loren files on main · 3 additive tables live",
       "links": []
     },
     {
@@ -54,41 +65,10 @@
       "ts": "Aug 12, 2026 · 7:45 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "PR-0 merged to main — Loren first went live behind the flag",
-      "bullets": [
-        "Merged the flag + <code>/loren</code> home shell into <b>main</b>.",
-        "Customers see nothing (flag off)."
-      ],
+      "title": "Loren's home behind a safety switch — merged to main",
+      "bullets": ["New <code>/loren</code> page, master on/off flag, only 2 lines of existing code changed."],
       "bench": "additive · flag OFF · reversible",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
-    },
-    {
-      "kind": "done",
-      "tag": "PR-2",
-      "ts": "Aug 12, 2026 · 7:40 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Loren starts doing things — orchestrator + Property Search",
-      "bullets": [
-        "Built the <b>orchestrator</b> and first live capability — <b>Property Search</b>.",
-        "Added a <b>metering ledger</b> for every run."
-      ],
-      "bench": "1 orchestrator function · 3 additive tables live",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-1",
-      "ts": "Aug 12, 2026 · 6:40 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket",
-      "title": "Live orb + drag carousels + conversation memory",
-      "bullets": [
-        "Animated <b>Loren orb</b> (idle / listening / thinking / speaking).",
-        "Tool tiles became a real <b>carousel</b>; private <b>conversation memory</b>."
-      ],
-      "bench": "5 files · 2 new tables",
-      "links": []
     },
     {
       "kind": "design",
