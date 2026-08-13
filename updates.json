@@ -1,21 +1,32 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 4:16 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 4:34 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-9",
+      "ts": "Aug 13, 2026 · 4:34 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v13)",
+      "title": "Linked data, full-width auto-sizing page, highlighter, bigger orb",
+      "bullets": [
+        "<b>Data is now linked</b> — Loren no longer runs her own count. The embedded search page is the single source of truth for the number and the listings, so the reply and the page can't disagree (the old 4-vs-1,238 mismatch is gone).",
+        "<b>No more scroll-within-scroll or tablet margins</b> — the inline page auto-sizes to its full content and the conversation uses the full screen width. It never opens a separate page.",
+        "Loren can now <b>highlight</b> key text like a real Sharpie (yellow / green / red / orange) and render <b>illuminated gradient links</b>.",
+        "The <b>orb is now larger than Loren's photo</b> — her portrait sits inside the moving, glowing orb, consistent on every instance (header, composer, each message)."
+      ],
+      "bench": "orchestrator v13 · page = source of truth · auto-height embed · highlighter · orb > photo · 0 existing files modified",
+      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+    },
     {
       "kind": "done",
       "tag": "PR-8",
       "ts": "Aug 13, 2026 · 4:16 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
-      "title": "The entire Search page now lives inside the conversation — fully operable",
-      "bullets": [
-        "Loren embeds the <b>real /search page</b> right in the chat, seeded with the filters she parsed (e.g. Aventura + For Sale) — the whole thing: search box, filters, view toggles, results.",
-        "It's <b>fully operable inline</b>: you can search, filter, switch views, and open listings without leaving the conversation.",
-        "Isolated by design (rendered in a frame with an error boundary), so it can never crash the Loren shell around it.",
-        "A <b>Compact view</b> toggle collapses it back to inline cards/table; <b>Open full screen</b> is there if you want the standalone page."
-      ],
-      "bench": "new bare embed route /loren/embed/search · real page inline · compact toggle · 0 existing files modified",
-      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
+      "title": "The entire Search page embedded inline in the conversation",
+      "bullets": ["The real /search page renders in the chat, seeded with Loren's filters, fully operable, isolated by an error boundary."],
+      "bench": "embed route · real page inline",
+      "links": []
     },
     {
       "kind": "done",
@@ -24,8 +35,8 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
       "title": "Readable replies, credits per turn, in-conversation follow-ups",
-      "bullets": ["Formatted markdown replies (no asterisks/run-ons); credits shown per turn + session total; New thread; follow-ups stay in the chat."],
-      "bench": "orchestrator v11 · credit meter visible",
+      "bullets": ["Formatted markdown; credits per turn + session total; New thread; follow-ups stay in the chat."],
+      "bench": "orchestrator v11",
       "links": []
     },
     {
@@ -35,52 +46,30 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
       "title": "Loren shows the REAL product UI inline (no look-alikes)",
-      "bullets": ["Search results render via your actual SearchListingsGrid / SearchListingCard / ListingsTableView."],
-      "bench": "orchestrator v10 · real components",
+      "bullets": ["Search results render via your actual product components."],
+      "bench": "orchestrator v10",
       "links": []
     },
     {
       "kind": "done",
-      "tag": "PR-5",
+      "tag": "PR-4→5",
       "ts": "Aug 13, 2026 · 2:18 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Deal Analyzer capability",
-      "bullets": ["Loren wraps the existing analyze-deal engine and renders its report inline."],
-      "bench": "orchestrator v7",
+      "title": "Real listings, geo-accurate search, dictation, Deal Analyzer",
+      "bullets": ["Real 18,080 listings; voice dictation; Loren on every orb; Deal Analyzer wraps the existing engine."],
+      "bench": "real data · analyzer",
       "links": []
     },
     {
       "kind": "done",
-      "tag": "PR-4",
-      "ts": "Aug 13, 2026 · 1:00 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Real listings, clean geo results, dictation, Loren's portrait, dated stamps",
-      "bullets": ["Real 18,080 listings, geo-accurate; voice dictation; Loren on every orb."],
-      "bench": "real data · dictation · persona",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-1→3",
+      "tag": "PR-0→3",
       "ts": "Aug 13, 2026 · 12:53 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "Orb, carousels, memory, orchestrator, live search, working session",
+      "title": "Foundation: flag, orb, carousels, memory, orchestrator, working session",
       "bullets": ["The Loren foundation on main behind the flag; the ask bar opens a live working session."],
       "bench": "on main · 3 additive tables live",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-0",
-      "ts": "Aug 12, 2026 · 7:45 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket (main) → Lovable",
-      "title": "Loren's home behind a safety switch — merged to main",
-      "bullets": ["New /loren page, master on/off flag, only 2 lines of existing code changed."],
-      "bench": "additive · flag OFF · reversible",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
     }
   ]
