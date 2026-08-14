@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 14, 2026 · 3:40 PM ET",
+  "updatedLabel": "Aug 14, 2026 · 4:20 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-19",
+      "ts": "Aug 14, 2026 · 4:20 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-transcribe v1)",
+      "title": "Real voice-to-text — talk as long as you want, get clean text",
+      "bullets": [
+        "Replaced the flaky browser mic (Web Speech API, which cut off after a sentence) with <b>OpenAI gpt-4o-transcribe</b> (Whisper-class, whisper-1 fallback). Speak for <b>10–20+ minutes</b> and it transcribes cleanly — Wispr-style.",
+        "The mic in <b>both composers</b> (home + working session) now records, shows a live <b>Recording 0:12</b> timer with a red pulse, and on stop transcribes and drops the text into the box. Tap the square to stop.",
+        "New <b>loren-transcribe</b> edge function reuses your existing OpenAI key — no new account. Works across Chrome (webm/opus) and Safari (mp4).",
+        "Premium upgrade available later: Deepgram Nova-3 streaming for live word-by-word as you speak (needs a key + a small relay)."
+      ],
+      "bench": "loren-transcribe (gpt-4o-transcribe → whisper-1) · MediaRecorder any-length · both composers wired",
+      "links": [{ "label": "supabase/functions/loren-transcribe", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-transcribe/index.ts" }]
+    },
     {
       "kind": "done",
       "tag": "PR-18",
@@ -9,13 +25,12 @@
       "where": "GitHub · onepropertymarket",
       "title": "Bigger hero, cleaner rail, and every tool opens its real UI inline",
       "bullets": [
-        "The center is now <b>much larger</b> — a big Loren orb and headline command the screen (responsive clamp sizing), the composer is wider, and the whole hero is truly centered.",
-        "Removed the <b>“Ready” checkmark list</b> from the sidebar — the rail is just navigation now (status badges still live on each tool inside the Platform Tools drawer).",
-        "<b>Every Platform Tool now opens its REAL working page inline in a conversation</b> — Property Search, Deal Analyzer, Comp & CMA, Market & People Intelligence, CRM, Deal Rooms, Outreach & Voice Agents, AI Contracts, AI Accounting, Vision Studio, Account. No look-alikes; it mounts your actual product page in the thread with an “Open full page” escape hatch.",
-        "Each inline tool has a header with its name + build-status badge, and a per-tool error boundary so one tool never breaks the thread."
+        "The center is now <b>much larger</b> — big orb + headline command the screen; wider composer; truly centered.",
+        "Removed the <b>“Ready” checkmark list</b> from the sidebar — status badges still live inside the Platform Tools drawer.",
+        "<b>Every Platform Tool opens its REAL working page inline</b> in a conversation (no look-alikes), with an “Open full page” escape hatch and a per-tool error boundary."
       ],
-      "bench": "LorenToolInline mounts 12 real pages inline · larger hero · rail cleaned · tool artifact in session",
-      "links": [{ "label": "src/loren/session/LorenToolInline.tsx", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/src/loren/session/LorenToolInline.tsx" }]
+      "bench": "LorenToolInline mounts 12 real pages inline · larger hero · rail cleaned",
+      "links": [{ "label": "LorenToolInline.tsx", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/src/loren/session/LorenToolInline.tsx" }]
     },
     {
       "kind": "done",
@@ -26,11 +41,10 @@
       "title": "Home redesign — calm ChatGPT-style shell, drawers, orb hero, status badges",
       "bullets": [
         "Collapsible sidebar (hamburger); calm centered hero with orb + typewriter; drawers for Platform Tools / Chats / Projects.",
-        "Subtle mono icons instead of a dozen gradients; build-status badges (✓ operational, β beta, α alpha).",
-        "AI-curated chat titles from the first prompt."
+        "Subtle mono icons; build-status badges (✓ operational, β beta, α alpha); AI-curated chat titles."
       ],
       "bench": "collapsible rail · drawers · orb+typewriter · status badges · AI titles",
-      "links": [{ "label": "src/loren/shell on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/shell" }]
+      "links": [{ "label": "src/loren/shell", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/shell" }]
     },
     {
       "kind": "done",
@@ -39,7 +53,7 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase (loren-profile v1)",
       "title": "Living profile — memory absorbs your whole footprint in the system",
-      "bullets": ["Memory now auto-compiles identity, roles, onboarding, habits, leads from every channel, purchasing, and activity — and Loren injects it into every reply."],
+      "bullets": ["Memory auto-compiles identity, roles, onboarding, habits, leads from every channel, purchasing, and activity — Loren injects it into every reply."],
       "bench": "loren-profile compiler · injected into orchestrator",
       "links": [{ "label": "supabase/functions/loren-profile", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/supabase/functions/loren-profile" }]
     },
@@ -56,24 +70,13 @@
     },
     {
       "kind": "done",
-      "tag": "PR-14",
-      "ts": "Aug 13, 2026 · 6:35 PM ET",
+      "tag": "PR-13→14",
+      "ts": "Aug 13, 2026 · 6:05–6:35 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Projects — group conversations into on-brand folders",
-      "bullets": ["Projects page + Unfiled bucket; file any conversation into a project from Chats."],
-      "bench": "loren_projects table · per-row filing",
-      "links": []
-    },
-    {
-      "kind": "done",
-      "tag": "PR-13",
-      "ts": "Aug 13, 2026 · 6:05 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket",
-      "title": "Activity board — a live, branded timeline of everything Loren does",
-      "bullets": ["Day-grouped feed of every action with capability, time, credits, duration; click to reopen the thread."],
-      "bench": "loren_agent_runs feed · click-to-reopen",
+      "title": "Activity board + Projects",
+      "bullets": ["Day-grouped Activity feed (click to reopen a thread); Projects folders with per-conversation filing from Chats."],
+      "bench": "loren_agent_runs feed · loren_projects table",
       "links": []
     },
     {
@@ -83,7 +86,7 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase → Lovable",
       "title": "Foundation → real inline search → inline property profile",
-      "bullets": ["Flag, orb, orchestrator, working session; real listings, geo search, dictation, Deal Analyzer; real UI inline, fast direct-mount, pagination, full-width, highlighter, dedicated /loren page, saved conversations, inline property profile with prev/next."],
+      "bullets": ["Flag, orb, orchestrator, working session; real listings, geo search, Deal Analyzer; real UI inline, fast direct-mount, pagination, full-width, highlighter, dedicated /loren page, saved conversations, inline property profile with prev/next."],
       "bench": "foundation · real data · inline search & profile",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
     }
