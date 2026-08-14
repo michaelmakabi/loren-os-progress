@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 13, 2026 · 7:05 PM ET",
+  "updatedLabel": "Aug 13, 2026 · 7:45 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-16",
+      "ts": "Aug 13, 2026 · 7:45 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-profile v1, loren-orchestrator v22)",
+      "title": "Living profile — memory now absorbs your whole footprint in the system",
+      "bullets": [
+        "Memory is now two layers. The new <b>living profile</b> at the top of <b>/loren/memory</b> is compiled automatically from what you actually do: <b>profile & identity</b>, <b>roles</b>, <b>onboarding & verification</b>, <b>investing habits</b> (deal types, target markets, budget, cap rate, timeline), <b>leads from every channel</b> (AI phone, GoHighLevel, lead exchange, direct), <b>credits & purchasing</b>, and <b>how you use the system</b> (most-used tools, credits spent, unread notifications).",
+        "It's real, live data — a new <b>loren-profile</b> edge function reads your profile, leads, payments, and usage (service-role, always scoped to you) and refreshes on demand.",
+        "Loren now <b>knows all of it automatically</b>: the orchestrator injects your living profile into every reply alongside the facts you curate, so she greets you by what you actually do — your markets, your budget, your leads — without being told.",
+        "The curated <b>facts</b> layer (you / business / team, add-pin-remove) stays underneath. Additive — a new edge function + one new page section, 0 existing product files touched."
+      ],
+      "bench": "loren-profile compiler · identity/roles/onboarding/habits/leads/purchasing/activity · injected into orchestrator v22 · living-profile section on Memory",
+      "links": [{ "label": "supabase/functions/loren-profile on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/supabase/functions/loren-profile" }]
+    },
     {
       "kind": "done",
       "tag": "PR-15",
@@ -59,8 +75,7 @@
       "bullets": [
         "Results show as your real listing <b>cards</b> in the conversation; clicking one opens the <b>real property page inline</b> (/loren/p/:id) inside the Loren shell.",
         "A slim header gives <b>Back to conversation</b> and <b>Prev / Next</b> to page through the whole result set (with '3 of 24').",
-        "The full, filterable <b>/search page</b> is still one tap away via the <b>Full search page</b> toggle.",
-        "Why the cards (not the full page) for clicking: your card's PIN badge isn't the database id, so the only reliable way to know which listing you clicked is to render the real card grid where Loren holds the actual listing."
+        "The full, filterable <b>/search page</b> is still one tap away via the <b>Full search page</b> toggle."
       ],
       "bench": "orchestrator v14 · inline profile route · prev/next · full-page toggle · 0 existing files modified",
       "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
