@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 14, 2026 · 2:55 PM ET",
+  "updatedLabel": "Aug 14, 2026 · 3:40 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-18",
+      "ts": "Aug 14, 2026 · 3:40 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket",
+      "title": "Bigger hero, cleaner rail, and every tool opens its real UI inline",
+      "bullets": [
+        "The center is now <b>much larger</b> — a big Loren orb and headline command the screen (responsive clamp sizing), the composer is wider, and the whole hero is truly centered.",
+        "Removed the <b>“Ready” checkmark list</b> from the sidebar — the rail is just navigation now (status badges still live on each tool inside the Platform Tools drawer).",
+        "<b>Every Platform Tool now opens its REAL working page inline in a conversation</b> — Property Search, Deal Analyzer, Comp & CMA, Market & People Intelligence, CRM, Deal Rooms, Outreach & Voice Agents, AI Contracts, AI Accounting, Vision Studio, Account. No look-alikes; it mounts your actual product page in the thread with an “Open full page” escape hatch.",
+        "Each inline tool has a header with its name + build-status badge, and a per-tool error boundary so one tool never breaks the thread."
+      ],
+      "bench": "LorenToolInline mounts 12 real pages inline · larger hero · rail cleaned · tool artifact in session",
+      "links": [{ "label": "src/loren/session/LorenToolInline.tsx", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/src/loren/session/LorenToolInline.tsx" }]
+    },
     {
       "kind": "done",
       "tag": "PR-17",
@@ -9,13 +25,11 @@
       "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v23)",
       "title": "Home redesign — calm ChatGPT-style shell, drawers, orb hero, status badges",
       "bullets": [
-        "The loud home is gone. A <b>collapsible sidebar</b> (hamburger, open/close like ChatGPT/Claude) replaces the wall of cards. The center is now a calm hero: a big <b>Loren orb</b>, <b>“Ask me anything.”</b>, and a <b>typewriter</b> that cycles what she can do, with the ask bar right under it.",
-        "Sidebar items open <b>drawers</b> instead of dumping everything on the page — <b>Platform Tools</b>, <b>Chats</b>, and <b>Projects</b> each slide out; “Jump back in” is now the Chats drawer. Activity and Memory stay as full pages.",
-        "Way calmer color: <b>subtle mono icon tiles</b> (one accent) instead of a dozen gradients. Every tool now carries a <b>build-status badge</b> — <b>✓ operational</b> (QA'd, live), <b>β beta</b> (about to ship), <b>α alpha</b> (being tried). Operational tools are also pinned as stationary quick-launches in the rail.",
-        "<b>AI-curated chat titles</b>: a new thread is auto-named from your first prompt (short, Title Case, relatable), with its date/time — no more “find me all of the properties…” as the title.",
-        "Full-width throughout, margins maximized. Additive — new shell components + tool registry, existing pages untouched."
+        "Collapsible sidebar (hamburger); calm centered hero with orb + typewriter; drawers for Platform Tools / Chats / Projects.",
+        "Subtle mono icons instead of a dozen gradients; build-status badges (✓ operational, β beta, α alpha).",
+        "AI-curated chat titles from the first prompt."
       ],
-      "bench": "collapsible rail · Tools/Chats/Projects drawers · orb + typewriter hero · status badges (✓/β/α) · AI titles (orchestrator v23) · full-width",
+      "bench": "collapsible rail · drawers · orb+typewriter · status badges · AI titles",
       "links": [{ "label": "src/loren/shell on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/shell" }]
     },
     {
@@ -23,30 +37,22 @@
       "tag": "PR-16",
       "ts": "Aug 13, 2026 · 7:45 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase (loren-profile v1, loren-orchestrator v22)",
-      "title": "Living profile — memory now absorbs your whole footprint in the system",
-      "bullets": [
-        "Memory is now two layers. The <b>living profile</b> at the top of <b>/loren/memory</b> is compiled automatically from what you actually do: profile & identity, roles, onboarding, investing habits, leads from every channel, credits & purchasing, and how you use the system.",
-        "Loren knows all of it automatically — the orchestrator injects your living profile into every reply alongside the facts you curate.",
-        "New <b>loren-profile</b> edge function (service-role, scoped to you); refreshes on demand."
-      ],
-      "bench": "loren-profile compiler · injected into orchestrator v22 · living-profile section on Memory",
-      "links": [{ "label": "supabase/functions/loren-profile on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/supabase/functions/loren-profile" }]
+      "where": "GitHub · onepropertymarket + Supabase (loren-profile v1)",
+      "title": "Living profile — memory absorbs your whole footprint in the system",
+      "bullets": ["Memory now auto-compiles identity, roles, onboarding, habits, leads from every channel, purchasing, and activity — and Loren injects it into every reply."],
+      "bench": "loren-profile compiler · injected into orchestrator",
+      "links": [{ "label": "supabase/functions/loren-profile", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/supabase/functions/loren-profile" }]
     },
     {
       "kind": "done",
       "tag": "PR-15",
       "ts": "Aug 13, 2026 · 7:05 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v16)",
-      "title": "Perpetual memory — Loren remembers you, your business, and your team",
-      "bullets": [
-        "New <b>Memory</b> page at <b>/loren/memory</b> — everything Loren knows, grouped into About you / Your business / Your team. Add, pin, or remove any fact.",
-        "Loren uses the memory in every reply and learns durable new facts on her own via a <b>remember</b> tool.",
-        "New owner-scoped <b>loren_memory</b> table."
-      ],
-      "bench": "loren_memory table + RLS · memory injected · remember tool",
-      "links": [{ "label": "src/loren/memory on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/memory" }]
+      "where": "GitHub · onepropertymarket + Supabase",
+      "title": "Perpetual memory — Loren remembers you, your business, your team",
+      "bullets": ["Memory page (About you / Your business / Your team); Loren uses it in every reply and learns durable facts via a remember tool."],
+      "bench": "loren_memory table · remember tool",
+      "links": [{ "label": "src/loren/memory", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/memory" }]
     },
     {
       "kind": "done",
@@ -55,13 +61,9 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase",
       "title": "Projects — group conversations into on-brand folders",
-      "bullets": [
-        "New page at <b>/loren/projects</b> — create named folders, each with its conversations; an <b>Unfiled</b> bucket catches the rest.",
-        "From <b>Chats</b>, every conversation has a compact project picker to file it in one click.",
-        "New owner-scoped <b>loren_projects</b> table linked via project_id."
-      ],
-      "bench": "loren_projects table + RLS + FK · projects route & rail · per-row filing in Chats",
-      "links": [{ "label": "src/loren/projects on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/projects" }]
+      "bullets": ["Projects page + Unfiled bucket; file any conversation into a project from Chats."],
+      "bench": "loren_projects table · per-row filing",
+      "links": []
     },
     {
       "kind": "done",
@@ -70,44 +72,19 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
       "title": "Activity board — a live, branded timeline of everything Loren does",
-      "bullets": [
-        "New page at <b>/loren/activity</b> — a day-grouped feed of every action, with capability, time, credits, and duration.",
-        "Clicking any item reopens the conversation it belongs to. Reads the live loren_agent_runs log."
-      ],
-      "bench": "activity route + home rail · loren_agent_runs feed · click-to-reopen",
-      "links": [{ "label": "src/loren/activity on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/activity" }]
-    },
-    {
-      "kind": "done",
-      "tag": "PR-12",
-      "ts": "Aug 13, 2026 · 5:45 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Inline property profile — click a listing, page prev/next without leaving the chat",
-      "bullets": ["Real listing cards in the conversation; clicking one opens the real property page inline with Back + Prev/Next; full search page one tap away."],
-      "bench": "orchestrator v14 · inline profile route · prev/next",
-      "links": [{ "label": "src/loren on main", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren" }]
-    },
-    {
-      "kind": "done",
-      "tag": "PR-11",
-      "ts": "Aug 13, 2026 · 5:25 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket",
-      "title": "Dedicated /loren page, home redesign, saved conversations",
-      "bullets": ["/loren is a dedicated always-on page; saved threads (Chats + Jump back in), reopenable."],
-      "bench": "dedicated page · saved threads",
+      "bullets": ["Day-grouped feed of every action with capability, time, credits, duration; click to reopen the thread."],
+      "bench": "loren_agent_runs feed · click-to-reopen",
       "links": []
     },
     {
       "kind": "done",
-      "tag": "PR-0→10",
-      "ts": "Aug 13, 2026 · 12:53–4:44 PM ET",
+      "tag": "PR-0→12",
+      "ts": "Aug 13, 2026",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase → Lovable",
-      "title": "Foundation → real inline search",
-      "bullets": ["Flag, orb, orchestrator, working session; real 18,080 listings, geo-accurate search, dictation, Deal Analyzer; real UI inline via your components; fast direct-mount, pagination, full-width; highlighter, gradient links, bigger orb."],
-      "bench": "foundation · real data · fast inline search",
+      "title": "Foundation → real inline search → inline property profile",
+      "bullets": ["Flag, orb, orchestrator, working session; real listings, geo search, dictation, Deal Analyzer; real UI inline, fast direct-mount, pagination, full-width, highlighter, dedicated /loren page, saved conversations, inline property profile with prev/next."],
+      "bench": "foundation · real data · inline search & profile",
       "links": [{ "label": "PR #152", "url": "https://github.com/michaelmakabi/onepropertymarket/pull/152" }]
     }
   ]
