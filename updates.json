@@ -1,6 +1,22 @@
 {
-  "updatedLabel": "Aug 14, 2026 · 4:20 PM ET",
+  "updatedLabel": "Aug 14, 2026 · 5:10 PM ET",
   "entries": [
+    {
+      "kind": "done",
+      "tag": "PR-20",
+      "ts": "Aug 14, 2026 · 5:10 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-deepgram-token v1)",
+      "title": "Live streaming voice — words appear as you speak (Deepgram Nova-3)",
+      "bullets": [
+        "Added the <b>Wispr / ChatGPT-voice</b> tier: <b>Deepgram Nova-3 live streaming</b>. When active, your words render <b>word-by-word</b> in a live preview under the composer as you talk, then the clean final text lands in the box.",
+        "One unified voice hook that <b>prefers live streaming</b> and <b>automatically falls back</b> to gpt-4o-transcribe (PR-19) if streaming isn't available — so voice never regresses.",
+        "Security: a short-lived (~30s) token is minted server-side by the new <b>loren-deepgram-token</b> function, so the long-lived Deepgram key is <b>never exposed</b> to the browser.",
+        "<b>Activation needs one thing:</b> a <b>DEEPGRAM_API_KEY</b> secret in Supabase. Until it's added, the token endpoint returns disabled and the composer keeps using the reliable gpt-4o dictation — zero risk."
+      ],
+      "bench": "loren-deepgram-token (short-lived grant) · useLorenVoice (live→batch fallback) · both composers · live preview",
+      "links": [{ "label": "supabase/functions/loren-deepgram-token", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-deepgram-token/index.ts" }]
+    },
     {
       "kind": "done",
       "tag": "PR-19",
@@ -9,12 +25,10 @@
       "where": "GitHub · onepropertymarket + Supabase (loren-transcribe v1)",
       "title": "Real voice-to-text — talk as long as you want, get clean text",
       "bullets": [
-        "Replaced the flaky browser mic (Web Speech API, which cut off after a sentence) with <b>OpenAI gpt-4o-transcribe</b> (Whisper-class, whisper-1 fallback). Speak for <b>10–20+ minutes</b> and it transcribes cleanly — Wispr-style.",
-        "The mic in <b>both composers</b> (home + working session) now records, shows a live <b>Recording 0:12</b> timer with a red pulse, and on stop transcribes and drops the text into the box. Tap the square to stop.",
-        "New <b>loren-transcribe</b> edge function reuses your existing OpenAI key — no new account. Works across Chrome (webm/opus) and Safari (mp4).",
-        "Premium upgrade available later: Deepgram Nova-3 streaming for live word-by-word as you speak (needs a key + a small relay)."
+        "Replaced the flaky browser mic with <b>OpenAI gpt-4o-transcribe</b> (whisper-1 fallback). Speak for <b>10–20+ minutes</b> and it transcribes cleanly.",
+        "The mic in both composers records with a live timer and drops clean text into the box on stop. Reuses your existing OpenAI key — no new account."
       ],
-      "bench": "loren-transcribe (gpt-4o-transcribe → whisper-1) · MediaRecorder any-length · both composers wired",
+      "bench": "loren-transcribe (gpt-4o-transcribe → whisper-1) · any-length recording",
       "links": [{ "label": "supabase/functions/loren-transcribe", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-transcribe/index.ts" }]
     },
     {
@@ -25,9 +39,8 @@
       "where": "GitHub · onepropertymarket",
       "title": "Bigger hero, cleaner rail, and every tool opens its real UI inline",
       "bullets": [
-        "The center is now <b>much larger</b> — big orb + headline command the screen; wider composer; truly centered.",
-        "Removed the <b>“Ready” checkmark list</b> from the sidebar — status badges still live inside the Platform Tools drawer.",
-        "<b>Every Platform Tool opens its REAL working page inline</b> in a conversation (no look-alikes), with an “Open full page” escape hatch and a per-tool error boundary."
+        "Much larger centered hero; removed the “Ready” checkmark list from the sidebar.",
+        "Every Platform Tool opens its REAL working page inline in a conversation, with an “Open full page” escape hatch and a per-tool error boundary."
       ],
       "bench": "LorenToolInline mounts 12 real pages inline · larger hero · rail cleaned",
       "links": [{ "label": "LorenToolInline.tsx", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/src/loren/session/LorenToolInline.tsx" }]
@@ -40,32 +53,21 @@
       "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v23)",
       "title": "Home redesign — calm ChatGPT-style shell, drawers, orb hero, status badges",
       "bullets": [
-        "Collapsible sidebar (hamburger); calm centered hero with orb + typewriter; drawers for Platform Tools / Chats / Projects.",
-        "Subtle mono icons; build-status badges (✓ operational, β beta, α alpha); AI-curated chat titles."
+        "Collapsible sidebar; calm centered hero with orb + typewriter; drawers for Platform Tools / Chats / Projects.",
+        "Subtle mono icons; build-status badges (✓ β α); AI-curated chat titles."
       ],
       "bench": "collapsible rail · drawers · orb+typewriter · status badges · AI titles",
       "links": [{ "label": "src/loren/shell", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/shell" }]
     },
     {
       "kind": "done",
-      "tag": "PR-16",
-      "ts": "Aug 13, 2026 · 7:45 PM ET",
+      "tag": "PR-15→16",
+      "ts": "Aug 13, 2026 · 7:05–7:45 PM ET",
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase (loren-profile v1)",
-      "title": "Living profile — memory absorbs your whole footprint in the system",
-      "bullets": ["Memory auto-compiles identity, roles, onboarding, habits, leads from every channel, purchasing, and activity — Loren injects it into every reply."],
-      "bench": "loren-profile compiler · injected into orchestrator",
-      "links": [{ "label": "supabase/functions/loren-profile", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/supabase/functions/loren-profile" }]
-    },
-    {
-      "kind": "done",
-      "tag": "PR-15",
-      "ts": "Aug 13, 2026 · 7:05 PM ET",
-      "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase",
-      "title": "Perpetual memory — Loren remembers you, your business, your team",
-      "bullets": ["Memory page (About you / Your business / Your team); Loren uses it in every reply and learns durable facts via a remember tool."],
-      "bench": "loren_memory table · remember tool",
+      "title": "Perpetual memory + living profile",
+      "bullets": ["Memory page (you / business / team) with a remember tool; plus a living profile auto-compiled from identity, roles, onboarding, habits, leads, purchasing, and activity — injected into every reply."],
+      "bench": "loren_memory table · loren-profile compiler",
       "links": [{ "label": "src/loren/memory", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/memory" }]
     },
     {
