@@ -1,21 +1,32 @@
 {
-  "updatedLabel": "Aug 14, 2026 · 5:10 PM ET",
+  "updatedLabel": "Aug 15, 2026 · 11:30 AM ET",
   "entries": [
     {
       "kind": "done",
-      "tag": "PR-20",
-      "ts": "Aug 14, 2026 · 5:10 PM ET",
+      "tag": "PR-22",
+      "ts": "Aug 15, 2026 · 11:30 AM ET",
       "who": "Claude Cowork (for Master Makabi)",
-      "where": "GitHub · onepropertymarket + Supabase (loren-deepgram-token v1)",
-      "title": "Live streaming voice — words appear as you speak (Deepgram Nova-3)",
+      "where": "GitHub · onepropertymarket + Supabase (loren-realtime-token v1)",
+      "title": "OpenAI Realtime live voice — words as you speak, all on your OpenAI key",
       "bullets": [
-        "Added the <b>Wispr / ChatGPT-voice</b> tier: <b>Deepgram Nova-3 live streaming</b>. When active, your words render <b>word-by-word</b> in a live preview under the composer as you talk, then the clean final text lands in the box.",
-        "One unified voice hook that <b>prefers live streaming</b> and <b>automatically falls back</b> to gpt-4o-transcribe (PR-19) if streaming isn't available — so voice never regresses.",
-        "Security: a short-lived (~30s) token is minted server-side by the new <b>loren-deepgram-token</b> function, so the long-lived Deepgram key is <b>never exposed</b> to the browser.",
-        "<b>Activation needs one thing:</b> a <b>DEEPGRAM_API_KEY</b> secret in Supabase. Until it's added, the token endpoint returns disabled and the composer keeps using the reliable gpt-4o dictation — zero risk."
+        "Swapped Deepgram for <b>OpenAI Realtime transcription</b> (gpt-4o-transcribe over <b>WebRTC</b>). When you tap the mic, your words stream in <b>live, word-by-word</b>, then the clean final transcript lands in the box — the ChatGPT-voice feel, 100% OpenAI on your existing key.",
+        "The unified voice hook <b>prefers live</b> and <b>falls back</b> to record-then-transcribe (gpt-4o-transcribe) if Realtime can't connect — so voice never breaks.",
+        "Security: a <b>short-lived ephemeral token</b> is minted server-side by the new <b>loren-realtime-token</b> function, so your OpenAI key is never exposed to the browser.",
+        "<b>Voice micro-crediting</b>: every dictation logs a small metered charge (1 credit per started minute) to loren_agent_runs, so voice usage shows in <b>Activity</b> and counts in the credits ledger."
       ],
-      "bench": "loren-deepgram-token (short-lived grant) · useLorenVoice (live→batch fallback) · both composers · live preview",
-      "links": [{ "label": "supabase/functions/loren-deepgram-token", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-deepgram-token/index.ts" }]
+      "bench": "loren-realtime-token (ephemeral) · useLorenVoice WebRTC live → gpt-4o batch fallback · voice micro-credit logging · rebuild nudged",
+      "links": [{ "label": "supabase/functions/loren-realtime-token", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-realtime-token/index.ts" }]
+    },
+    {
+      "kind": "done",
+      "tag": "PR-21",
+      "ts": "Aug 14, 2026 · 5:40 PM ET",
+      "who": "Claude Cowork (for Master Makabi)",
+      "where": "GitHub · onepropertymarket",
+      "title": "Voice went OpenAI-only",
+      "bullets": ["Dropped the Deepgram dependency; voice runs purely on OpenAI gpt-4o-transcribe with the existing key — no extra setup."],
+      "bench": "OpenAI-only useLorenVoice",
+      "links": []
     },
     {
       "kind": "done",
@@ -24,11 +35,8 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase (loren-transcribe v1)",
       "title": "Real voice-to-text — talk as long as you want, get clean text",
-      "bullets": [
-        "Replaced the flaky browser mic with <b>OpenAI gpt-4o-transcribe</b> (whisper-1 fallback). Speak for <b>10–20+ minutes</b> and it transcribes cleanly.",
-        "The mic in both composers records with a live timer and drops clean text into the box on stop. Reuses your existing OpenAI key — no new account."
-      ],
-      "bench": "loren-transcribe (gpt-4o-transcribe → whisper-1) · any-length recording",
+      "bullets": ["Replaced the flaky browser mic with OpenAI gpt-4o-transcribe (whisper-1 fallback); any-length recording, clean text. Reuses your OpenAI key."],
+      "bench": "loren-transcribe (gpt-4o-transcribe → whisper-1)",
       "links": [{ "label": "supabase/functions/loren-transcribe", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/supabase/functions/loren-transcribe/index.ts" }]
     },
     {
@@ -38,11 +46,8 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket",
       "title": "Bigger hero, cleaner rail, and every tool opens its real UI inline",
-      "bullets": [
-        "Much larger centered hero; removed the “Ready” checkmark list from the sidebar.",
-        "Every Platform Tool opens its REAL working page inline in a conversation, with an “Open full page” escape hatch and a per-tool error boundary."
-      ],
-      "bench": "LorenToolInline mounts 12 real pages inline · larger hero · rail cleaned",
+      "bullets": ["Much larger centered hero; every Platform Tool opens its REAL working page inline with an “Open full page” escape hatch and a per-tool error boundary."],
+      "bench": "LorenToolInline mounts real pages inline",
       "links": [{ "label": "LorenToolInline.tsx", "url": "https://github.com/michaelmakabi/onepropertymarket/blob/main/src/loren/session/LorenToolInline.tsx" }]
     },
     {
@@ -52,10 +57,7 @@
       "who": "Claude Cowork (for Master Makabi)",
       "where": "GitHub · onepropertymarket + Supabase (loren-orchestrator v23)",
       "title": "Home redesign — calm ChatGPT-style shell, drawers, orb hero, status badges",
-      "bullets": [
-        "Collapsible sidebar; calm centered hero with orb + typewriter; drawers for Platform Tools / Chats / Projects.",
-        "Subtle mono icons; build-status badges (✓ β α); AI-curated chat titles."
-      ],
+      "bullets": ["Collapsible sidebar; centered orb + typewriter hero; drawers; subtle mono icons; build-status badges (✓ β α); AI-curated chat titles."],
       "bench": "collapsible rail · drawers · orb+typewriter · status badges · AI titles",
       "links": [{ "label": "src/loren/shell", "url": "https://github.com/michaelmakabi/onepropertymarket/tree/main/src/loren/shell" }]
     },
